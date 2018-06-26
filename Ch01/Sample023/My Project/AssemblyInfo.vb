@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 '查看程序集特性的值
 
-<Assembly: AssemblyTitle("Ch01")>
+<Assembly: AssemblyTitle("Sample023")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("Ch01")>
+<Assembly: AssemblyProduct("Sample023")>
 <Assembly: AssemblyCopyright("Copyright ©  2018")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 '如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-<Assembly: Guid("2c259557-2dd8-42bd-a92d-2b4af65cf85b")>
+<Assembly: Guid("b8934976-c7c4-4837-8e2f-8f342f73dca3")>
 
 ' 程序集的版本信息由下列四个值组成: 
 '
