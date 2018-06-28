@@ -25,9 +25,12 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtUpper = New System.Windows.Forms.TextBox()
-        Me.txtLower = New System.Windows.Forms.TextBox()
-        Me.btnExit = New System.Windows.Forms.Button()
+        Me.TxtUpper = New System.Windows.Forms.TextBox()
+        Me.TxtLower = New System.Windows.Forms.TextBox()
+        Me.BtnExit = New System.Windows.Forms.Button()
+        Me.BtnConvert = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -37,66 +40,99 @@ Partial Class Form1
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("华文行楷", 30.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.IndianRed
-        Me.Label1.Location = New System.Drawing.Point(45, 21)
+        Me.Label1.Location = New System.Drawing.Point(52, 21)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(386, 42)
+        Me.Label1.Size = New System.Drawing.Size(468, 42)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "金额小写转大写  v1.0"
+        Me.Label1.Text = "人民币大小写转换器  v1.0"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(55, 136)
+        Me.Label2.Location = New System.Drawing.Point(41, 84)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(89, 12)
+        Me.Label2.Size = New System.Drawing.Size(83, 12)
         Me.Label2.TabIndex = 0
-        Me.Label2.Text = "输入小写金额: "
+        Me.Label2.Text = "输入小写金额:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(55, 194)
+        Me.Label3.Location = New System.Drawing.Point(41, 117)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(89, 12)
         Me.Label3.TabIndex = 0
         Me.Label3.Text = "自动大写金额: "
         '
-        'txtUpper
+        'TxtUpper
         '
-        Me.txtUpper.Location = New System.Drawing.Point(192, 185)
-        Me.txtUpper.Name = "txtUpper"
-        Me.txtUpper.Size = New System.Drawing.Size(409, 21)
-        Me.txtUpper.TabIndex = 1
+        Me.TxtUpper.Location = New System.Drawing.Point(130, 114)
+        Me.TxtUpper.Name = "TxtUpper"
+        Me.TxtUpper.Size = New System.Drawing.Size(361, 21)
+        Me.TxtUpper.TabIndex = 1
         '
-        'txtLower
+        'TxtLower
         '
-        Me.txtLower.Location = New System.Drawing.Point(192, 136)
-        Me.txtLower.Name = "txtLower"
-        Me.txtLower.Size = New System.Drawing.Size(409, 21)
-        Me.txtLower.TabIndex = 1
+        Me.TxtLower.Location = New System.Drawing.Point(130, 81)
+        Me.TxtLower.Name = "TxtLower"
+        Me.TxtLower.Size = New System.Drawing.Size(361, 21)
+        Me.TxtLower.TabIndex = 1
         '
-        'btnExit
+        'BtnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(526, 227)
-        Me.btnExit.Name = "btnExit"
-        Me.btnExit.Size = New System.Drawing.Size(75, 23)
-        Me.btnExit.TabIndex = 2
-        Me.btnExit.Text = " 退出"
-        Me.btnExit.UseVisualStyleBackColor = True
+        Me.BtnExit.Location = New System.Drawing.Point(497, 112)
+        Me.BtnExit.Name = "BtnExit"
+        Me.BtnExit.Size = New System.Drawing.Size(75, 23)
+        Me.BtnExit.TabIndex = 2
+        Me.BtnExit.Text = " 退出"
+        Me.BtnExit.UseVisualStyleBackColor = True
+        '
+        'BtnConvert
+        '
+        Me.BtnConvert.Location = New System.Drawing.Point(497, 79)
+        Me.BtnConvert.Name = "BtnConvert"
+        Me.BtnConvert.Size = New System.Drawing.Size(75, 23)
+        Me.BtnConvert.TabIndex = 3
+        Me.BtnConvert.Text = "转换"
+        Me.BtnConvert.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.Label4.Location = New System.Drawing.Point(12, 200)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(185, 12)
+        Me.Label4.TabIndex = 4
+        Me.Label4.Text = "Tips：数字金额最多支持千亿级别"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.Label5.Location = New System.Drawing.Point(330, 200)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(161, 12)
+        Me.Label5.TabIndex = 5
+        Me.Label5.Text = "Author:王旭栋 QQ:260726000"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(620, 274)
-        Me.Controls.Add(Me.btnExit)
-        Me.Controls.Add(Me.txtLower)
-        Me.Controls.Add(Me.txtUpper)
+        Me.ClientSize = New System.Drawing.Size(635, 221)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.BtnConvert)
+        Me.Controls.Add(Me.BtnExit)
+        Me.Controls.Add(Me.TxtLower)
+        Me.Controls.Add(Me.TxtUpper)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Text = "RMB Converter V1.0"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -105,7 +141,10 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents txtUpper As TextBox
-    Friend WithEvents txtLower As TextBox
-    Friend WithEvents btnExit As Button
+    Friend WithEvents TxtUpper As TextBox
+    Friend WithEvents TxtLower As TextBox
+    Friend WithEvents BtnExit As Button
+    Friend WithEvents BtnConvert As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
 End Class

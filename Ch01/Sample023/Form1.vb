@@ -1,11 +1,19 @@
 ﻿Public Class Form1
-    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+
+    Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
         Me.Close()
         Application.Exit()
         Application.ExitThread()
     End Sub
 
-    Private Sub txtLower_TextChanged(sender As Object, e As EventArgs) Handles txtLower.TextChanged
-        txtUpper.Text = RMBChinese(txtLower.Text)
+    Private Sub BtnConvert_Click(sender As Object, e As EventArgs) Handles BtnConvert.Click
+        TxtUpper.Text = RMBChinese(TxtLower.Text)
+    End Sub
+
+    Private Sub TxtLower_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtLower.KeyPress
+        '绑定回车事件
+        If e.KeyChar = ChrW(13) Then
+            Call BtnConvert_Click(sender, e)
+        End If
     End Sub
 End Class
