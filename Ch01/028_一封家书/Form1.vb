@@ -7,6 +7,7 @@ Public Class Form1
     Private p As Integer
     Private Sub Pic0_MouseMove(sender As Object, e As MouseEventArgs) Handles Pic0.MouseMove
         p = MousePosition.Y
+
     End Sub
 
     Private Function Trigger(ByVal n As Integer) As Boolean()
@@ -70,5 +71,9 @@ Public Class Form1
 
     Private Sub Pic0_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles Pic0.MouseDoubleClick
         Application.Exit()
+    End Sub
+
+    Private Sub Pic0_MouseHover(sender As Object, e As EventArgs) Handles Pic0.MouseHover
+
     End Sub
 End Class
