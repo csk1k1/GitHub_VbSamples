@@ -28,10 +28,7 @@ Public Class Form1
         Timer1.Enabled = False
     End Sub
     Private Sub Pic0_MouseMove(sender As Object, e As MouseEventArgs) Handles Pic0.MouseMove
-        'p = MousePosition.Y
-
-        'Pic0.Refresh()
-        'Me.Invalidate()
+        p = MousePosition.Y
     End Sub
 
     'Private Function Trigger(ByVal n As Integer) As Boolean()
@@ -49,7 +46,7 @@ Public Class Form1
         Dim f As New Font("华文行楷", 12)
         Dim b As Brush = Brushes.Black
         Dim letter As String() = {"一封家书", "亲爱的爸爸妈妈：", "你们好吗", "现在工作很忙吧！", "身体还好么？", "我现在广州挺好的", "爸爸妈妈不要太牵挂", "虽然我很少写信", "其实我很想家", "WXD"}
-        Len = letter.Length
+        len = letter.Length
         Dim w = Pic0.Width
         Dim h = Pic0.Height / (letter.Length + 1)
         For i = 0 To letter.Length - 1
@@ -88,5 +85,9 @@ Public Class Form1
 
     Private Sub Pic0_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles Pic0.MouseDoubleClick
         Application.Exit()
+    End Sub
+
+    Private Sub Pic0_MouseHover(sender As Object, e As EventArgs) Handles Pic0.MouseHover
+
     End Sub
 End Class
