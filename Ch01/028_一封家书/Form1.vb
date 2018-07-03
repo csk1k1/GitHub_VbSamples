@@ -1,13 +1,30 @@
 ﻿Imports System.Drawing
 Imports System.Drawing.Graphics
 Imports System.Drawing.Text
+Imports System.Runtime.InteropServices
+
 Public Class Form1
 
     Private len As Integer
-    Private t() As Boolean
-    Private p As Integer
     Private x, y As Single
-    Private i As Integer
+    'Private t() As Boolean
+    'Private p As Integer
+    'Private i As Integer
+    Dim offSetX, offSetY As Integer
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        Me.Location = New Point(Cursor.Position.X - offSetX, Cursor.Position.Y - offSetY)
+    End Sub
+
+    Private Sub Pic0_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Pic0.MouseDown
+        offSetX = PointToClient(Cursor.Position).X
+        offSetY = PointToClient(Cursor.Position).Y
+        Timer1.Enabled = True
+    End Sub
+
+    Private Sub Pic0_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Pic0.MouseUp
+        Timer1.Enabled = False
+    End Sub
     Private Sub Pic0_MouseMove(sender As Object, e As MouseEventArgs) Handles Pic0.MouseMove
         'p = MousePosition.Y
 
@@ -47,7 +64,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
 
-
+        Pic0.Cursor = New Cursor("C:\Users\WXD\source\repos\VBSamples\Ch01\028_一封家书\Source\Cur\Text_Hnd.cur")
 
         'Dim ifc As New InstalledFontCollection
         'Dim fonts As FontFamily() = ifc.Families
