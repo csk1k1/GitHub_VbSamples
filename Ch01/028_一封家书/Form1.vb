@@ -27,18 +27,6 @@ Public Class Form1
     Private Sub Pic0_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Pic0.MouseUp
         Timer1.Enabled = False
     End Sub
-    Private Sub Pic0_MouseMove(sender As Object, e As MouseEventArgs) Handles Pic0.MouseMove
-        p = MousePosition.Y
-    End Sub
-
-    'Private Function Trigger(ByVal n As Integer) As Boolean()
-
-    '    ReDim t(n)
-    '    For j As Integer = 0 To n
-    '        t(j) = False
-    '    Next
-    '    Return t
-    'End Function
 
     Private Sub Pic0_Paint(sender As Object, e As PaintEventArgs) Handles Pic0.Paint
 
@@ -87,7 +75,5 @@ Public Class Form1
         Application.Exit()
     End Sub
 
-    Private Sub Pic0_MouseHover(sender As Object, e As EventArgs) Handles Pic0.MouseHover
 
-    End Sub
 End Class
