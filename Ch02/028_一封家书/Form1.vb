@@ -51,7 +51,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
 
-        Pic0.Cursor = New Cursor("C:\Users\WXD\source\repos\VBSamples\Ch01\028_一封家书\Source\Cur\Text_Hnd.cur")
+        Pic0.Cursor = New Cursor("Resources\Text_Hnd.cur")
 
         'Dim ifc As New InstalledFontCollection
         'Dim fonts As FontFamily() = ifc.Families
