@@ -11,7 +11,7 @@ Public Class DataTypeChecker
             MessageBox.Show("The Data is Numeric")
         ElseIf IsDate(data) Then
             MessageBox.Show("The Data is a Date")
-        ElseIf data Like "[a-z]" Then
+        ElseIf data Like "[a-zA-z]" Then
             MessageBox.Show("你输入了一个小写字母")
         End If
     End Sub
