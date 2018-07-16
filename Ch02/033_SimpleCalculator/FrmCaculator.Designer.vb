@@ -20,9 +20,12 @@ Partial Class FrmCaculator
     '注意: 以下过程是 Windows 窗体设计器所必需的
     '可以使用 Windows 窗体设计器修改它。  
     '不要使用代码编辑器修改它。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PnlShow = New System.Windows.Forms.Panel()
+        Me.LblPrev = New System.Windows.Forms.Label()
+        Me.LblCurrent = New System.Windows.Forms.Label()
+        Me.PnlBtns = New System.Windows.Forms.Panel()
         Me.BtnEqual = New System.Windows.Forms.Button()
         Me.Btn0 = New System.Windows.Forms.Button()
         Me.BtnPoint = New System.Windows.Forms.Button()
@@ -47,45 +50,74 @@ Partial Class FrmCaculator
         Me.BtnPct = New System.Windows.Forms.Button()
         Me.BtnCe = New System.Windows.Forms.Button()
         Me.Btn7 = New System.Windows.Forms.Button()
-        Me.LblPrev = New System.Windows.Forms.Label()
-        Me.LblCurrent = New System.Windows.Forms.Label()
-        Me.Panel1.SuspendLayout()
+        Me.PnlShow.SuspendLayout()
+        Me.PnlBtns.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Panel1
+        'PnlShow
         '
-        Me.Panel1.AutoSize = True
-        Me.Panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.Panel1.BackColor = System.Drawing.Color.Transparent
-        Me.Panel1.Controls.Add(Me.BtnEqual)
-        Me.Panel1.Controls.Add(Me.Btn0)
-        Me.Panel1.Controls.Add(Me.BtnPoint)
-        Me.Panel1.Controls.Add(Me.BtnPlusMinus)
-        Me.Panel1.Controls.Add(Me.BtnPlus)
-        Me.Panel1.Controls.Add(Me.Btn2)
-        Me.Panel1.Controls.Add(Me.Btn3)
-        Me.Panel1.Controls.Add(Me.Btn1)
-        Me.Panel1.Controls.Add(Me.BtnMinus)
-        Me.Panel1.Controls.Add(Me.Btn5)
-        Me.Panel1.Controls.Add(Me.Btn6)
-        Me.Panel1.Controls.Add(Me.Btn4)
-        Me.Panel1.Controls.Add(Me.BtnReciprocal)
-        Me.Panel1.Controls.Add(Me.BtnDivision)
-        Me.Panel1.Controls.Add(Me.BtnAsterisk)
-        Me.Panel1.Controls.Add(Me.BtnSqrt)
-        Me.Panel1.Controls.Add(Me.BtnC)
-        Me.Panel1.Controls.Add(Me.Btn8)
-        Me.Panel1.Controls.Add(Me.BtnSqr)
-        Me.Panel1.Controls.Add(Me.BtnBackspace)
-        Me.Panel1.Controls.Add(Me.Btn9)
-        Me.Panel1.Controls.Add(Me.BtnPct)
-        Me.Panel1.Controls.Add(Me.BtnCe)
-        Me.Panel1.Controls.Add(Me.Btn7)
-        Me.Panel1.ImeMode = System.Windows.Forms.ImeMode.Disable
-        Me.Panel1.Location = New System.Drawing.Point(13, 80)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(194, 277)
-        Me.Panel1.TabIndex = 1
+        Me.PnlShow.Controls.Add(Me.LblPrev)
+        Me.PnlShow.Controls.Add(Me.LblCurrent)
+        Me.PnlShow.Location = New System.Drawing.Point(0, 0)
+        Me.PnlShow.Name = "PnlShow"
+        Me.PnlShow.Size = New System.Drawing.Size(200, 100)
+        Me.PnlShow.TabIndex = 25
+        '
+        'LblPrev
+        '
+        Me.LblPrev.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.LblPrev.ForeColor = System.Drawing.Color.Gray
+        Me.LblPrev.Location = New System.Drawing.Point(0, 3)
+        Me.LblPrev.Name = "LblPrev"
+        Me.LblPrev.Size = New System.Drawing.Size(196, 36)
+        Me.LblPrev.TabIndex = 26
+        Me.LblPrev.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblCurrent
+        '
+        Me.LblCurrent.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.LblCurrent.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.LblCurrent.ForeColor = System.Drawing.Color.Black
+        Me.LblCurrent.Location = New System.Drawing.Point(4, 51)
+        Me.LblCurrent.Name = "LblCurrent"
+        Me.LblCurrent.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.LblCurrent.Size = New System.Drawing.Size(190, 47)
+        Me.LblCurrent.TabIndex = 27
+        Me.LblCurrent.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'PnlBtns
+        '
+        Me.PnlBtns.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.PnlBtns.BackColor = System.Drawing.Color.Transparent
+        Me.PnlBtns.Controls.Add(Me.BtnEqual)
+        Me.PnlBtns.Controls.Add(Me.Btn0)
+        Me.PnlBtns.Controls.Add(Me.BtnPoint)
+        Me.PnlBtns.Controls.Add(Me.BtnPlusMinus)
+        Me.PnlBtns.Controls.Add(Me.BtnPlus)
+        Me.PnlBtns.Controls.Add(Me.Btn2)
+        Me.PnlBtns.Controls.Add(Me.Btn3)
+        Me.PnlBtns.Controls.Add(Me.Btn1)
+        Me.PnlBtns.Controls.Add(Me.BtnMinus)
+        Me.PnlBtns.Controls.Add(Me.Btn5)
+        Me.PnlBtns.Controls.Add(Me.Btn6)
+        Me.PnlBtns.Controls.Add(Me.Btn4)
+        Me.PnlBtns.Controls.Add(Me.BtnReciprocal)
+        Me.PnlBtns.Controls.Add(Me.BtnDivision)
+        Me.PnlBtns.Controls.Add(Me.BtnAsterisk)
+        Me.PnlBtns.Controls.Add(Me.BtnSqrt)
+        Me.PnlBtns.Controls.Add(Me.BtnC)
+        Me.PnlBtns.Controls.Add(Me.Btn8)
+        Me.PnlBtns.Controls.Add(Me.BtnSqr)
+        Me.PnlBtns.Controls.Add(Me.BtnBackspace)
+        Me.PnlBtns.Controls.Add(Me.Btn9)
+        Me.PnlBtns.Controls.Add(Me.BtnPct)
+        Me.PnlBtns.Controls.Add(Me.BtnCe)
+        Me.PnlBtns.Controls.Add(Me.Btn7)
+        Me.PnlBtns.ImeMode = System.Windows.Forms.ImeMode.Disable
+        Me.PnlBtns.Location = New System.Drawing.Point(12, 118)
+        Me.PnlBtns.Name = "PnlBtns"
+        Me.PnlBtns.Size = New System.Drawing.Size(197, 279)
+        Me.PnlBtns.TabIndex = 0
         '
         'BtnEqual
         '
@@ -93,7 +125,7 @@ Partial Class FrmCaculator
         Me.BtnEqual.Location = New System.Drawing.Point(141, 234)
         Me.BtnEqual.Name = "BtnEqual"
         Me.BtnEqual.Size = New System.Drawing.Size(50, 40)
-        Me.BtnEqual.TabIndex = 0
+        Me.BtnEqual.TabIndex = 1
         Me.BtnEqual.Text = "="
         Me.BtnEqual.UseVisualStyleBackColor = True
         '
@@ -103,7 +135,7 @@ Partial Class FrmCaculator
         Me.Btn0.Location = New System.Drawing.Point(49, 234)
         Me.Btn0.Name = "Btn0"
         Me.Btn0.Size = New System.Drawing.Size(50, 40)
-        Me.Btn0.TabIndex = 0
+        Me.Btn0.TabIndex = 3
         Me.Btn0.Text = "0"
         Me.Btn0.UseVisualStyleBackColor = True
         '
@@ -113,7 +145,7 @@ Partial Class FrmCaculator
         Me.BtnPoint.Location = New System.Drawing.Point(95, 234)
         Me.BtnPoint.Name = "BtnPoint"
         Me.BtnPoint.Size = New System.Drawing.Size(50, 40)
-        Me.BtnPoint.TabIndex = 0
+        Me.BtnPoint.TabIndex = 2
         Me.BtnPoint.Text = "."
         Me.BtnPoint.UseVisualStyleBackColor = True
         '
@@ -123,7 +155,7 @@ Partial Class FrmCaculator
         Me.BtnPlusMinus.Location = New System.Drawing.Point(3, 234)
         Me.BtnPlusMinus.Name = "BtnPlusMinus"
         Me.BtnPlusMinus.Size = New System.Drawing.Size(50, 40)
-        Me.BtnPlusMinus.TabIndex = 0
+        Me.BtnPlusMinus.TabIndex = 4
         Me.BtnPlusMinus.Text = "±"
         Me.BtnPlusMinus.UseVisualStyleBackColor = True
         '
@@ -133,7 +165,7 @@ Partial Class FrmCaculator
         Me.BtnPlus.Location = New System.Drawing.Point(141, 188)
         Me.BtnPlus.Name = "BtnPlus"
         Me.BtnPlus.Size = New System.Drawing.Size(50, 40)
-        Me.BtnPlus.TabIndex = 0
+        Me.BtnPlus.TabIndex = 5
         Me.BtnPlus.Text = "+"
         Me.BtnPlus.UseVisualStyleBackColor = True
         '
@@ -143,7 +175,7 @@ Partial Class FrmCaculator
         Me.Btn2.Location = New System.Drawing.Point(49, 188)
         Me.Btn2.Name = "Btn2"
         Me.Btn2.Size = New System.Drawing.Size(50, 40)
-        Me.Btn2.TabIndex = 0
+        Me.Btn2.TabIndex = 6
         Me.Btn2.Text = "2"
         Me.Btn2.UseVisualStyleBackColor = True
         '
@@ -153,7 +185,7 @@ Partial Class FrmCaculator
         Me.Btn3.Location = New System.Drawing.Point(95, 188)
         Me.Btn3.Name = "Btn3"
         Me.Btn3.Size = New System.Drawing.Size(50, 40)
-        Me.Btn3.TabIndex = 0
+        Me.Btn3.TabIndex = 7
         Me.Btn3.Text = "3"
         Me.Btn3.UseVisualStyleBackColor = True
         '
@@ -163,7 +195,7 @@ Partial Class FrmCaculator
         Me.Btn1.Location = New System.Drawing.Point(3, 188)
         Me.Btn1.Name = "Btn1"
         Me.Btn1.Size = New System.Drawing.Size(50, 40)
-        Me.Btn1.TabIndex = 0
+        Me.Btn1.TabIndex = 8
         Me.Btn1.Text = "1"
         Me.Btn1.UseVisualStyleBackColor = True
         '
@@ -173,7 +205,7 @@ Partial Class FrmCaculator
         Me.BtnMinus.Location = New System.Drawing.Point(141, 142)
         Me.BtnMinus.Name = "BtnMinus"
         Me.BtnMinus.Size = New System.Drawing.Size(50, 40)
-        Me.BtnMinus.TabIndex = 0
+        Me.BtnMinus.TabIndex = 9
         Me.BtnMinus.Text = "-"
         Me.BtnMinus.UseVisualStyleBackColor = True
         '
@@ -183,7 +215,7 @@ Partial Class FrmCaculator
         Me.Btn5.Location = New System.Drawing.Point(49, 142)
         Me.Btn5.Name = "Btn5"
         Me.Btn5.Size = New System.Drawing.Size(50, 40)
-        Me.Btn5.TabIndex = 0
+        Me.Btn5.TabIndex = 10
         Me.Btn5.Text = "5"
         Me.Btn5.UseVisualStyleBackColor = True
         '
@@ -193,7 +225,7 @@ Partial Class FrmCaculator
         Me.Btn6.Location = New System.Drawing.Point(95, 142)
         Me.Btn6.Name = "Btn6"
         Me.Btn6.Size = New System.Drawing.Size(50, 40)
-        Me.Btn6.TabIndex = 0
+        Me.Btn6.TabIndex = 11
         Me.Btn6.Text = "6"
         Me.Btn6.UseVisualStyleBackColor = True
         '
@@ -203,7 +235,7 @@ Partial Class FrmCaculator
         Me.Btn4.Location = New System.Drawing.Point(3, 142)
         Me.Btn4.Name = "Btn4"
         Me.Btn4.Size = New System.Drawing.Size(50, 40)
-        Me.Btn4.TabIndex = 0
+        Me.Btn4.TabIndex = 12
         Me.Btn4.Text = "4"
         Me.Btn4.UseVisualStyleBackColor = True
         '
@@ -213,7 +245,7 @@ Partial Class FrmCaculator
         Me.BtnReciprocal.Location = New System.Drawing.Point(141, 4)
         Me.BtnReciprocal.Name = "BtnReciprocal"
         Me.BtnReciprocal.Size = New System.Drawing.Size(50, 40)
-        Me.BtnReciprocal.TabIndex = 0
+        Me.BtnReciprocal.TabIndex = 13
         Me.BtnReciprocal.Text = "1/x"
         Me.BtnReciprocal.UseVisualStyleBackColor = True
         '
@@ -223,7 +255,7 @@ Partial Class FrmCaculator
         Me.BtnDivision.Location = New System.Drawing.Point(141, 50)
         Me.BtnDivision.Name = "BtnDivision"
         Me.BtnDivision.Size = New System.Drawing.Size(50, 40)
-        Me.BtnDivision.TabIndex = 0
+        Me.BtnDivision.TabIndex = 14
         Me.BtnDivision.Text = "÷"
         Me.BtnDivision.UseVisualStyleBackColor = True
         '
@@ -233,7 +265,7 @@ Partial Class FrmCaculator
         Me.BtnAsterisk.Location = New System.Drawing.Point(141, 96)
         Me.BtnAsterisk.Name = "BtnAsterisk"
         Me.BtnAsterisk.Size = New System.Drawing.Size(50, 40)
-        Me.BtnAsterisk.TabIndex = 0
+        Me.BtnAsterisk.TabIndex = 15
         Me.BtnAsterisk.Text = "*"
         Me.BtnAsterisk.UseVisualStyleBackColor = True
         '
@@ -243,7 +275,7 @@ Partial Class FrmCaculator
         Me.BtnSqrt.Location = New System.Drawing.Point(49, 4)
         Me.BtnSqrt.Name = "BtnSqrt"
         Me.BtnSqrt.Size = New System.Drawing.Size(50, 40)
-        Me.BtnSqrt.TabIndex = 0
+        Me.BtnSqrt.TabIndex = 16
         Me.BtnSqrt.Text = "√"
         Me.BtnSqrt.UseVisualStyleBackColor = True
         '
@@ -253,7 +285,7 @@ Partial Class FrmCaculator
         Me.BtnC.Location = New System.Drawing.Point(49, 50)
         Me.BtnC.Name = "BtnC"
         Me.BtnC.Size = New System.Drawing.Size(50, 40)
-        Me.BtnC.TabIndex = 0
+        Me.BtnC.TabIndex = 17
         Me.BtnC.Text = "C"
         Me.BtnC.UseVisualStyleBackColor = True
         '
@@ -263,7 +295,7 @@ Partial Class FrmCaculator
         Me.Btn8.Location = New System.Drawing.Point(49, 96)
         Me.Btn8.Name = "Btn8"
         Me.Btn8.Size = New System.Drawing.Size(50, 40)
-        Me.Btn8.TabIndex = 0
+        Me.Btn8.TabIndex = 18
         Me.Btn8.Text = "8"
         Me.Btn8.UseVisualStyleBackColor = True
         '
@@ -273,7 +305,7 @@ Partial Class FrmCaculator
         Me.BtnSqr.Location = New System.Drawing.Point(95, 4)
         Me.BtnSqr.Name = "BtnSqr"
         Me.BtnSqr.Size = New System.Drawing.Size(50, 40)
-        Me.BtnSqr.TabIndex = 0
+        Me.BtnSqr.TabIndex = 19
         Me.BtnSqr.Text = "x²"
         Me.BtnSqr.UseVisualStyleBackColor = True
         '
@@ -283,7 +315,7 @@ Partial Class FrmCaculator
         Me.BtnBackspace.Location = New System.Drawing.Point(95, 50)
         Me.BtnBackspace.Name = "BtnBackspace"
         Me.BtnBackspace.Size = New System.Drawing.Size(50, 40)
-        Me.BtnBackspace.TabIndex = 0
+        Me.BtnBackspace.TabIndex = 20
         Me.BtnBackspace.Text = "退格"
         Me.BtnBackspace.UseVisualStyleBackColor = True
         '
@@ -293,7 +325,7 @@ Partial Class FrmCaculator
         Me.Btn9.Location = New System.Drawing.Point(95, 96)
         Me.Btn9.Name = "Btn9"
         Me.Btn9.Size = New System.Drawing.Size(50, 40)
-        Me.Btn9.TabIndex = 0
+        Me.Btn9.TabIndex = 21
         Me.Btn9.Text = "9"
         Me.Btn9.UseVisualStyleBackColor = True
         '
@@ -303,7 +335,7 @@ Partial Class FrmCaculator
         Me.BtnPct.Location = New System.Drawing.Point(3, 4)
         Me.BtnPct.Name = "BtnPct"
         Me.BtnPct.Size = New System.Drawing.Size(50, 40)
-        Me.BtnPct.TabIndex = 0
+        Me.BtnPct.TabIndex = 22
         Me.BtnPct.Text = "％"
         Me.BtnPct.UseVisualStyleBackColor = True
         '
@@ -313,7 +345,7 @@ Partial Class FrmCaculator
         Me.BtnCe.Location = New System.Drawing.Point(3, 50)
         Me.BtnCe.Name = "BtnCe"
         Me.BtnCe.Size = New System.Drawing.Size(50, 40)
-        Me.BtnCe.TabIndex = 0
+        Me.BtnCe.TabIndex = 23
         Me.BtnCe.Text = "CE"
         Me.BtnCe.UseVisualStyleBackColor = True
         '
@@ -323,41 +355,22 @@ Partial Class FrmCaculator
         Me.Btn7.Location = New System.Drawing.Point(3, 96)
         Me.Btn7.Name = "Btn7"
         Me.Btn7.Size = New System.Drawing.Size(50, 40)
-        Me.Btn7.TabIndex = 0
+        Me.Btn7.TabIndex = 24
         Me.Btn7.Text = "7"
         Me.Btn7.UseVisualStyleBackColor = True
-        '
-        'LblPrev
-        '
-        Me.LblPrev.Location = New System.Drawing.Point(13, 4)
-        Me.LblPrev.Name = "LblPrev"
-        Me.LblPrev.Size = New System.Drawing.Size(194, 26)
-        Me.LblPrev.TabIndex = 2
-        Me.LblPrev.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LblCurrent
-        '
-        Me.LblCurrent.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.LblCurrent.Location = New System.Drawing.Point(11, 30)
-        Me.LblCurrent.Name = "LblCurrent"
-        Me.LblCurrent.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.LblCurrent.Size = New System.Drawing.Size(195, 47)
-        Me.LblCurrent.TabIndex = 2
-        Me.LblCurrent.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'FrmCaculator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(211, 360)
-        Me.Controls.Add(Me.LblCurrent)
-        Me.Controls.Add(Me.LblPrev)
-        Me.Controls.Add(Me.Panel1)
+        Me.ClientSize = New System.Drawing.Size(215, 408)
+        Me.Controls.Add(Me.PnlBtns)
+        Me.Controls.Add(Me.PnlShow)
         Me.Name = "FrmCaculator"
         Me.Text = "Calculator V1.0"
-        Me.Panel1.ResumeLayout(False)
+        Me.PnlShow.ResumeLayout(False)
+        Me.PnlBtns.ResumeLayout(False)
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents BtnEqual As Button
@@ -384,7 +397,8 @@ Partial Class FrmCaculator
     Friend WithEvents BtnPct As Button
     Friend WithEvents BtnCe As Button
     Friend WithEvents Btn7 As Button
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents LblPrev As Label
+    Friend WithEvents PnlBtns As Panel
     Friend WithEvents LblCurrent As Label
+    Friend WithEvents PnlShow As Panel
+    Friend WithEvents LblPrev As Label
 End Class

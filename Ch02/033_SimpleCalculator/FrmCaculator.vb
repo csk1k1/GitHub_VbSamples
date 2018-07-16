@@ -5,27 +5,17 @@ Public Class FrmCaculator
 
 
     Private strPrev As String
-    Private strCurrent As String
+    Private strCurrent As String = Str(0)
 
 
-    Private Sub Initial()
-
-        ' 此调用是设计器所必需的。
-        InitializeComponent()
-
-        ' 在 InitializeComponent() 调用之后添加任何初始化。
-        strPrev = ""
-        strCurrent = "0"
+    Private Sub Main_Load(sender As Object, e As EventArgs) Handles Me.Load
         LblCurrent.Text = strCurrent
         LblPrev.Text = strPrev
-    End Sub
-    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Initial()
     End Sub
 
     '判断当前算式是否为非0, 如果非0返回TRUE,如果为0返回FALSE
     Private Function Valid() As Boolean
-        If strCurrent = "0" Then
+        If Equals(strCurrent, Str(0)) Then
             Return False
         Else
             Return True
@@ -38,6 +28,7 @@ Public Class FrmCaculator
         Else
             strCurrent = Str(n)
         End If
+        LblCurrent.Text = strCurrent
     End Sub
 
 
@@ -53,4 +44,29 @@ Public Class FrmCaculator
     Private Sub Btn2_Click(sender As Object, e As EventArgs) Handles Btn2.Click
         Entry(2)
     End Sub
+
+    Private Sub Btn3_Click(sender As Object, e As EventArgs) Handles Btn3.Click
+        Entry(3)
+    End Sub
+
+    Private Sub Btn4_Click(sender As Object, e As EventArgs) Handles Btn4.Click
+        Entry(4)
+    End Sub
+
+    Private Sub Btn5_Click(sender As Object, e As EventArgs) Handles Btn5.Click
+        Entry(5)
+    End Sub
+    Private Sub Btn6_Click(sender As Object, e As EventArgs) Handles Btn6.Click
+        Entry(6)
+    End Sub
+    Private Sub Btn7_Click(sender As Object, e As EventArgs) Handles Btn7.Click
+        Entry(7)
+    End Sub
+    Private Sub Btn8_Click(sender As Object, e As EventArgs) Handles Btn8.Click
+        Entry(8)
+    End Sub
+    Private Sub Btn9_Click(sender As Object, e As EventArgs) Handles Btn9.Click
+        Entry(9)
+    End Sub
+
 End Class
