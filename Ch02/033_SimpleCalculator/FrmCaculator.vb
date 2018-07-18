@@ -86,4 +86,17 @@ Public Class FrmCaculator
     Private Sub FrmCaculator_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
 
     End Sub
+    Protected Overrides Sub WndProc(ByRef m As Message)
+
+        Select Case m.Msg
+            Case &H24 'WM_GETMINMAXINFO = &H24
+
+            Case &HF 'WM_PAINT 要求一个窗口重绘自己 
+
+            Case &H214 'WM_SIZING 
+
+        End Select
+
+        MyBase.WndProc(m)
+    End Sub
 End Class
