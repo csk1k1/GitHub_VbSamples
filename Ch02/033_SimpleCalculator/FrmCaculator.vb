@@ -9,9 +9,19 @@ Public Class FrmCaculator
 
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles Me.Load
+
         LblCurrent.Text = strCurrent
         LblPrev.Text = strPrev
     End Sub
+
+    '声明 
+    Protected Overrides Sub OnSizeChanged(e As EventArgs)
+
+    End Sub
+    Protected Sub OnSizing(e As EventArgs)
+
+    End Sub
+
 
     '判断当前算式是否为非0, 如果非0返回TRUE,如果为0返回FALSE
     Private Function Valid() As Boolean
@@ -69,4 +79,11 @@ Public Class FrmCaculator
         Entry(9)
     End Sub
 
+    Private Sub FrmCaculator_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+
+    End Sub
+
+    Private Sub FrmCaculator_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
+
+    End Sub
 End Class
