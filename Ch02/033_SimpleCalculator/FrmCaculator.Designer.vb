@@ -56,34 +56,35 @@ Partial Class FrmCaculator
         '
         'PnlShow
         '
-        Me.PnlShow.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PnlShow.Controls.Add(Me.LblPrev)
         Me.PnlShow.Controls.Add(Me.LblCurrent)
-        Me.PnlShow.Location = New System.Drawing.Point(15, 6)
+        Me.PnlShow.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PnlShow.Location = New System.Drawing.Point(0, 0)
         Me.PnlShow.Name = "PnlShow"
-        Me.PnlShow.Size = New System.Drawing.Size(197, 100)
+        Me.PnlShow.Size = New System.Drawing.Size(224, 100)
         Me.PnlShow.TabIndex = 25
         '
         'LblPrev
         '
-        Me.LblPrev.Dock = System.Windows.Forms.DockStyle.Top
+        Me.LblPrev.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LblPrev.Font = New System.Drawing.Font("Agency FB", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblPrev.ForeColor = System.Drawing.Color.Gray
         Me.LblPrev.Location = New System.Drawing.Point(0, 0)
         Me.LblPrev.Name = "LblPrev"
-        Me.LblPrev.Size = New System.Drawing.Size(197, 41)
+        Me.LblPrev.Size = New System.Drawing.Size(224, 41)
         Me.LblPrev.TabIndex = 26
         Me.LblPrev.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LblCurrent
         '
         Me.LblCurrent.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.LblCurrent.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.LblCurrent.Font = New System.Drawing.Font("Agency FB", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblCurrent.ForeColor = System.Drawing.Color.Black
         Me.LblCurrent.Location = New System.Drawing.Point(0, 41)
         Me.LblCurrent.Name = "LblCurrent"
         Me.LblCurrent.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.LblCurrent.Size = New System.Drawing.Size(197, 59)
+        Me.LblCurrent.Size = New System.Drawing.Size(224, 59)
         Me.LblCurrent.TabIndex = 27
         Me.LblCurrent.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -91,9 +92,9 @@ Partial Class FrmCaculator
         '
         Me.BtnEqual.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BtnEqual.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnEqual.Location = New System.Drawing.Point(153, 251)
+        Me.BtnEqual.Location = New System.Drawing.Point(171, 283)
         Me.BtnEqual.Name = "BtnEqual"
-        Me.BtnEqual.Size = New System.Drawing.Size(46, 46)
+        Me.BtnEqual.Size = New System.Drawing.Size(50, 55)
         Me.BtnEqual.TabIndex = 12
         Me.BtnEqual.Text = "="
         Me.BtnEqual.UseVisualStyleBackColor = True
@@ -102,9 +103,9 @@ Partial Class FrmCaculator
         '
         Me.Btn0.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Btn0.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Btn0.Location = New System.Drawing.Point(53, 251)
+        Me.Btn0.Location = New System.Drawing.Point(59, 283)
         Me.Btn0.Name = "Btn0"
-        Me.Btn0.Size = New System.Drawing.Size(44, 46)
+        Me.Btn0.Size = New System.Drawing.Size(50, 55)
         Me.Btn0.TabIndex = 0
         Me.Btn0.Text = "0"
         Me.Btn0.UseVisualStyleBackColor = True
@@ -113,9 +114,9 @@ Partial Class FrmCaculator
         '
         Me.BtnPoint.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BtnPoint.Font = New System.Drawing.Font("宋体", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnPoint.Location = New System.Drawing.Point(103, 251)
+        Me.BtnPoint.Location = New System.Drawing.Point(115, 283)
         Me.BtnPoint.Name = "BtnPoint"
-        Me.BtnPoint.Size = New System.Drawing.Size(44, 46)
+        Me.BtnPoint.Size = New System.Drawing.Size(50, 55)
         Me.BtnPoint.TabIndex = 11
         Me.BtnPoint.Text = "."
         Me.BtnPoint.UseVisualStyleBackColor = True
@@ -124,9 +125,9 @@ Partial Class FrmCaculator
         '
         Me.BtnPlusMinus.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BtnPlusMinus.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnPlusMinus.Location = New System.Drawing.Point(3, 251)
+        Me.BtnPlusMinus.Location = New System.Drawing.Point(3, 283)
         Me.BtnPlusMinus.Name = "BtnPlusMinus"
-        Me.BtnPlusMinus.Size = New System.Drawing.Size(44, 46)
+        Me.BtnPlusMinus.Size = New System.Drawing.Size(50, 55)
         Me.BtnPlusMinus.TabIndex = 10
         Me.BtnPlusMinus.Text = "±"
         Me.BtnPlusMinus.UseVisualStyleBackColor = True
@@ -135,9 +136,9 @@ Partial Class FrmCaculator
         '
         Me.BtnPlus.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BtnPlus.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnPlus.Location = New System.Drawing.Point(153, 201)
+        Me.BtnPlus.Location = New System.Drawing.Point(171, 227)
         Me.BtnPlus.Name = "BtnPlus"
-        Me.BtnPlus.Size = New System.Drawing.Size(46, 44)
+        Me.BtnPlus.Size = New System.Drawing.Size(50, 50)
         Me.BtnPlus.TabIndex = 13
         Me.BtnPlus.Text = "+"
         Me.BtnPlus.UseVisualStyleBackColor = True
@@ -146,9 +147,9 @@ Partial Class FrmCaculator
         '
         Me.Btn2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Btn2.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Btn2.Location = New System.Drawing.Point(53, 201)
+        Me.Btn2.Location = New System.Drawing.Point(59, 227)
         Me.Btn2.Name = "Btn2"
-        Me.Btn2.Size = New System.Drawing.Size(44, 44)
+        Me.Btn2.Size = New System.Drawing.Size(50, 50)
         Me.Btn2.TabIndex = 2
         Me.Btn2.Text = "2"
         Me.Btn2.UseVisualStyleBackColor = True
@@ -157,9 +158,9 @@ Partial Class FrmCaculator
         '
         Me.Btn3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Btn3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Btn3.Location = New System.Drawing.Point(103, 201)
+        Me.Btn3.Location = New System.Drawing.Point(115, 227)
         Me.Btn3.Name = "Btn3"
-        Me.Btn3.Size = New System.Drawing.Size(44, 44)
+        Me.Btn3.Size = New System.Drawing.Size(50, 50)
         Me.Btn3.TabIndex = 3
         Me.Btn3.Text = "3"
         Me.Btn3.UseVisualStyleBackColor = True
@@ -168,9 +169,9 @@ Partial Class FrmCaculator
         '
         Me.Btn1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Btn1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Btn1.Location = New System.Drawing.Point(3, 201)
+        Me.Btn1.Location = New System.Drawing.Point(3, 227)
         Me.Btn1.Name = "Btn1"
-        Me.Btn1.Size = New System.Drawing.Size(44, 44)
+        Me.Btn1.Size = New System.Drawing.Size(50, 50)
         Me.Btn1.TabIndex = 1
         Me.Btn1.Text = "1"
         Me.Btn1.UseVisualStyleBackColor = True
@@ -179,9 +180,9 @@ Partial Class FrmCaculator
         '
         Me.BtnMinus.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BtnMinus.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnMinus.Location = New System.Drawing.Point(153, 151)
+        Me.BtnMinus.Location = New System.Drawing.Point(171, 171)
         Me.BtnMinus.Name = "BtnMinus"
-        Me.BtnMinus.Size = New System.Drawing.Size(46, 44)
+        Me.BtnMinus.Size = New System.Drawing.Size(50, 50)
         Me.BtnMinus.TabIndex = 14
         Me.BtnMinus.Text = "-"
         Me.BtnMinus.UseVisualStyleBackColor = True
@@ -190,9 +191,9 @@ Partial Class FrmCaculator
         '
         Me.Btn5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Btn5.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Btn5.Location = New System.Drawing.Point(53, 151)
+        Me.Btn5.Location = New System.Drawing.Point(59, 171)
         Me.Btn5.Name = "Btn5"
-        Me.Btn5.Size = New System.Drawing.Size(44, 44)
+        Me.Btn5.Size = New System.Drawing.Size(50, 50)
         Me.Btn5.TabIndex = 5
         Me.Btn5.Text = "5"
         Me.Btn5.UseVisualStyleBackColor = True
@@ -201,9 +202,9 @@ Partial Class FrmCaculator
         '
         Me.Btn6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Btn6.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Btn6.Location = New System.Drawing.Point(103, 151)
+        Me.Btn6.Location = New System.Drawing.Point(115, 171)
         Me.Btn6.Name = "Btn6"
-        Me.Btn6.Size = New System.Drawing.Size(44, 44)
+        Me.Btn6.Size = New System.Drawing.Size(50, 50)
         Me.Btn6.TabIndex = 6
         Me.Btn6.Text = "6"
         Me.Btn6.UseVisualStyleBackColor = True
@@ -212,9 +213,9 @@ Partial Class FrmCaculator
         '
         Me.Btn4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Btn4.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Btn4.Location = New System.Drawing.Point(3, 151)
+        Me.Btn4.Location = New System.Drawing.Point(3, 171)
         Me.Btn4.Name = "Btn4"
-        Me.Btn4.Size = New System.Drawing.Size(44, 44)
+        Me.Btn4.Size = New System.Drawing.Size(50, 50)
         Me.Btn4.TabIndex = 4
         Me.Btn4.Text = "4"
         Me.Btn4.UseVisualStyleBackColor = True
@@ -223,9 +224,9 @@ Partial Class FrmCaculator
         '
         Me.BtnReciprocal.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BtnReciprocal.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnReciprocal.Location = New System.Drawing.Point(153, 3)
+        Me.BtnReciprocal.Location = New System.Drawing.Point(171, 3)
         Me.BtnReciprocal.Name = "BtnReciprocal"
-        Me.BtnReciprocal.Size = New System.Drawing.Size(46, 43)
+        Me.BtnReciprocal.Size = New System.Drawing.Size(50, 50)
         Me.BtnReciprocal.TabIndex = 23
         Me.BtnReciprocal.Text = "1/x"
         Me.BtnReciprocal.UseVisualStyleBackColor = True
@@ -234,9 +235,9 @@ Partial Class FrmCaculator
         '
         Me.BtnDivision.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BtnDivision.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnDivision.Location = New System.Drawing.Point(153, 52)
+        Me.BtnDivision.Location = New System.Drawing.Point(171, 59)
         Me.BtnDivision.Name = "BtnDivision"
-        Me.BtnDivision.Size = New System.Drawing.Size(46, 43)
+        Me.BtnDivision.Size = New System.Drawing.Size(50, 50)
         Me.BtnDivision.TabIndex = 19
         Me.BtnDivision.Text = "÷"
         Me.BtnDivision.UseVisualStyleBackColor = True
@@ -245,9 +246,9 @@ Partial Class FrmCaculator
         '
         Me.BtnAsterisk.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BtnAsterisk.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnAsterisk.Location = New System.Drawing.Point(153, 101)
+        Me.BtnAsterisk.Location = New System.Drawing.Point(171, 115)
         Me.BtnAsterisk.Name = "BtnAsterisk"
-        Me.BtnAsterisk.Size = New System.Drawing.Size(46, 44)
+        Me.BtnAsterisk.Size = New System.Drawing.Size(50, 50)
         Me.BtnAsterisk.TabIndex = 15
         Me.BtnAsterisk.Text = "*"
         Me.BtnAsterisk.UseVisualStyleBackColor = True
@@ -256,9 +257,9 @@ Partial Class FrmCaculator
         '
         Me.BtnSqrt.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BtnSqrt.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnSqrt.Location = New System.Drawing.Point(53, 3)
+        Me.BtnSqrt.Location = New System.Drawing.Point(59, 3)
         Me.BtnSqrt.Name = "BtnSqrt"
-        Me.BtnSqrt.Size = New System.Drawing.Size(44, 43)
+        Me.BtnSqrt.Size = New System.Drawing.Size(50, 50)
         Me.BtnSqrt.TabIndex = 21
         Me.BtnSqrt.Text = "√"
         Me.BtnSqrt.UseVisualStyleBackColor = True
@@ -267,9 +268,9 @@ Partial Class FrmCaculator
         '
         Me.BtnC.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BtnC.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnC.Location = New System.Drawing.Point(53, 52)
+        Me.BtnC.Location = New System.Drawing.Point(59, 59)
         Me.BtnC.Name = "BtnC"
-        Me.BtnC.Size = New System.Drawing.Size(44, 43)
+        Me.BtnC.Size = New System.Drawing.Size(50, 50)
         Me.BtnC.TabIndex = 17
         Me.BtnC.Text = "C"
         Me.BtnC.UseVisualStyleBackColor = True
@@ -278,9 +279,9 @@ Partial Class FrmCaculator
         '
         Me.Btn8.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Btn8.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Btn8.Location = New System.Drawing.Point(53, 101)
+        Me.Btn8.Location = New System.Drawing.Point(59, 115)
         Me.Btn8.Name = "Btn8"
-        Me.Btn8.Size = New System.Drawing.Size(44, 44)
+        Me.Btn8.Size = New System.Drawing.Size(50, 50)
         Me.Btn8.TabIndex = 8
         Me.Btn8.Text = "8"
         Me.Btn8.UseVisualStyleBackColor = True
@@ -289,9 +290,9 @@ Partial Class FrmCaculator
         '
         Me.BtnSqr.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BtnSqr.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnSqr.Location = New System.Drawing.Point(103, 3)
+        Me.BtnSqr.Location = New System.Drawing.Point(115, 3)
         Me.BtnSqr.Name = "BtnSqr"
-        Me.BtnSqr.Size = New System.Drawing.Size(44, 43)
+        Me.BtnSqr.Size = New System.Drawing.Size(50, 50)
         Me.BtnSqr.TabIndex = 22
         Me.BtnSqr.Text = "x²"
         Me.BtnSqr.UseVisualStyleBackColor = True
@@ -300,9 +301,9 @@ Partial Class FrmCaculator
         '
         Me.BtnBackspace.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BtnBackspace.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnBackspace.Location = New System.Drawing.Point(103, 52)
+        Me.BtnBackspace.Location = New System.Drawing.Point(115, 59)
         Me.BtnBackspace.Name = "BtnBackspace"
-        Me.BtnBackspace.Size = New System.Drawing.Size(44, 43)
+        Me.BtnBackspace.Size = New System.Drawing.Size(50, 50)
         Me.BtnBackspace.TabIndex = 18
         Me.BtnBackspace.Text = "退格"
         Me.BtnBackspace.UseVisualStyleBackColor = True
@@ -311,9 +312,9 @@ Partial Class FrmCaculator
         '
         Me.Btn9.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Btn9.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Btn9.Location = New System.Drawing.Point(103, 101)
+        Me.Btn9.Location = New System.Drawing.Point(115, 115)
         Me.Btn9.Name = "Btn9"
-        Me.Btn9.Size = New System.Drawing.Size(44, 44)
+        Me.Btn9.Size = New System.Drawing.Size(50, 50)
         Me.Btn9.TabIndex = 9
         Me.Btn9.Text = "9"
         Me.Btn9.UseVisualStyleBackColor = True
@@ -324,7 +325,7 @@ Partial Class FrmCaculator
         Me.BtnPct.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.BtnPct.Location = New System.Drawing.Point(3, 3)
         Me.BtnPct.Name = "BtnPct"
-        Me.BtnPct.Size = New System.Drawing.Size(44, 43)
+        Me.BtnPct.Size = New System.Drawing.Size(50, 50)
         Me.BtnPct.TabIndex = 20
         Me.BtnPct.Text = "％"
         Me.BtnPct.UseVisualStyleBackColor = True
@@ -333,9 +334,9 @@ Partial Class FrmCaculator
         '
         Me.BtnCe.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BtnCe.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnCe.Location = New System.Drawing.Point(3, 52)
+        Me.BtnCe.Location = New System.Drawing.Point(3, 59)
         Me.BtnCe.Name = "BtnCe"
-        Me.BtnCe.Size = New System.Drawing.Size(44, 43)
+        Me.BtnCe.Size = New System.Drawing.Size(50, 50)
         Me.BtnCe.TabIndex = 16
         Me.BtnCe.Text = "CE"
         Me.BtnCe.UseVisualStyleBackColor = True
@@ -344,18 +345,15 @@ Partial Class FrmCaculator
         '
         Me.Btn7.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Btn7.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Btn7.Location = New System.Drawing.Point(3, 101)
+        Me.Btn7.Location = New System.Drawing.Point(3, 115)
         Me.Btn7.Name = "Btn7"
-        Me.Btn7.Size = New System.Drawing.Size(44, 44)
+        Me.Btn7.Size = New System.Drawing.Size(50, 50)
         Me.Btn7.TabIndex = 7
         Me.Btn7.Text = "7"
         Me.Btn7.UseVisualStyleBackColor = True
         '
         'TableLayoutPanel1
         '
-        Me.TableLayoutPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel1.ColumnCount = 4
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
@@ -385,7 +383,8 @@ Partial Class FrmCaculator
         Me.TableLayoutPanel1.Controls.Add(Me.Btn5, 1, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.BtnPoint, 2, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.Btn0, 1, 5)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 129)
+        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 100)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 6
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.65499!))
@@ -394,7 +393,7 @@ Partial Class FrmCaculator
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.67167!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.67167!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.675!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(202, 300)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(224, 341)
         Me.TableLayoutPanel1.TabIndex = 26
         '
         'FrmCaculator
@@ -405,9 +404,11 @@ Partial Class FrmCaculator
         Me.ClientSize = New System.Drawing.Size(224, 441)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.PnlShow)
-        Me.MaximumSize = New System.Drawing.Size(360, 720)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(360, 480)
         Me.MinimumSize = New System.Drawing.Size(240, 480)
         Me.Name = "FrmCaculator"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Calculator V1.0"
         Me.PnlShow.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)

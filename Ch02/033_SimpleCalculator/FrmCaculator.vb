@@ -15,12 +15,12 @@ Public Class FrmCaculator
     End Sub
 
     '声明 
-    Protected Overrides Sub OnSizeChanged(e As EventArgs)
+    'Protected Overrides Sub OnSizeChanged(e As EventArgs)
 
-    End Sub
-    Protected Sub OnSizing(e As EventArgs)
+    'End Sub
+    'Protected Sub OnSizing(e As EventArgs)
 
-    End Sub
+    'End Sub
 
 
     '判断当前算式是否为非0, 如果非0返回TRUE,如果为0返回FALSE
@@ -79,13 +79,6 @@ Public Class FrmCaculator
         Entry(9)
     End Sub
 
-    Private Sub FrmCaculator_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-
-    End Sub
-
-    Private Sub FrmCaculator_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
-
-    End Sub
     Protected Overrides Sub WndProc(ByRef m As Message)
 
         Select Case m.Msg
