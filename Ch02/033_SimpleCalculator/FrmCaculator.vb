@@ -1,17 +1,27 @@
-﻿Imports System.Math
+﻿Imports System.Globalization
+Imports System.Numerics
+Imports System.Text.RegularExpressions
+Imports System.Math
 Imports Microsoft.VisualBasic.VBMath
 
 Public Class FrmCaculator
 
 
-    Private strPrev As String
-    Private strCurrent As String = Str(0)
-
+    Private dPrev As Decimal
+    Private dCurrent As Decimal = 0
+    Private strOp As String = String.Empty
+    Private inputs() As String = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "*", "/", "^"}
+    ' Get decimal separator.
+    Private decimalSeparator As String = NumberFormatInfo.CurrentInfo.NumberDecimalSeparator
+    Private pattern As String
+    Dim intToFormat As Long
+    Dim bigintToFormat As BigInteger = BigInteger.Zero
+    Dim floatToFormat As Double
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles Me.Load
 
-        LblCurrent.Text = strCurrent
-        LblPrev.Text = strPrev
+        LblCurrent.Text = dCurrent
+        LblPrev.Text = dPrev
     End Sub
 
     '声明 
@@ -24,59 +34,65 @@ Public Class FrmCaculator
 
 
     '判断当前算式是否为非0, 如果非0返回TRUE,如果为0返回FALSE
-    Private Function Valid() As Boolean
-        If Equals(strCurrent, Str(0)) Then
+    Private Function started() As Boolean
+        If Equals(dCurrent, "0") Then
             Return False
         Else
             Return True
         End If
     End Function
 
-    Private Sub Entry(n As Integer)
-        If Valid() Then
-            strCurrent = strCurrent + Str(n)
-        Else
-            strCurrent = Str(n)
+    Private Sub EntryNum(n As Int32)
+        If Not dCurrent.ToString.Length < 12 Then
+            Exit Sub
         End If
-        LblCurrent.Text = strCurrent
+
+        '如果初值已经变为非零数，则新数字加在strCurrent最后；如果初值还是零则用新值赋值给strCurrent
+        If started() Then
+            dCurrent = Decimal.Parse(dCurrent.ToString + n.ToString)
+            dCurrent = CDec(dCurrent.ToString + n.ToString)
+        Else
+            dCurrent = n
+        End If
+        LblCurrent.Text = dCurrent
     End Sub
 
 
 
     Private Sub Btn0_Click(sender As Object, e As EventArgs) Handles Btn0.Click
-        Entry(0)
+        EntryNum(0)
     End Sub
 
     Private Sub Btn1_Click(sender As Object, e As EventArgs) Handles Btn1.Click
-        Entry(1)
+        EntryNum(1)
     End Sub
 
     Private Sub Btn2_Click(sender As Object, e As EventArgs) Handles Btn2.Click
-        Entry(2)
+        EntryNum(2)
     End Sub
 
     Private Sub Btn3_Click(sender As Object, e As EventArgs) Handles Btn3.Click
-        Entry(3)
+        EntryNum(3)
     End Sub
 
     Private Sub Btn4_Click(sender As Object, e As EventArgs) Handles Btn4.Click
-        Entry(4)
+        EntryNum(4)
     End Sub
 
     Private Sub Btn5_Click(sender As Object, e As EventArgs) Handles Btn5.Click
-        Entry(5)
+        EntryNum(5)
     End Sub
     Private Sub Btn6_Click(sender As Object, e As EventArgs) Handles Btn6.Click
-        Entry(6)
+        EntryNum(6)
     End Sub
     Private Sub Btn7_Click(sender As Object, e As EventArgs) Handles Btn7.Click
-        Entry(7)
+        EntryNum(7)
     End Sub
     Private Sub Btn8_Click(sender As Object, e As EventArgs) Handles Btn8.Click
-        Entry(8)
+        EntryNum(8)
     End Sub
     Private Sub Btn9_Click(sender As Object, e As EventArgs) Handles Btn9.Click
-        Entry(9)
+        EntryNum(9)
     End Sub
 
     Protected Overrides Sub WndProc(ByRef m As Message)
