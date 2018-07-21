@@ -1,4 +1,14 @@
-﻿Public Class Form1
+﻿Imports System.Globalization
+Public Class Form1
+    Public Sub New()
+
+        ' 此调用是设计器所必需的。
+        InitializeComponent()
+
+        ' 在 InitializeComponent() 调用之后添加任何初始化。
+
+    End Sub
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
         '    Version1:End    可以将 End 语句放在过程中任意处， 以强制整个应用程序停止运行。
@@ -36,6 +46,29 @@
         '    有关使用 Windows 操作系统的退出代码的列表， 请参阅 联机System Error Codes Windows 文档中。
         System.Environment.Exit(0)
 
+
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Dim value As Double = 1234567890
+        Console.WriteLine(value.ToString("#,#", CultureInfo.InvariantCulture))
+        Console.WriteLine(String.Format(CultureInfo.InvariantCulture,
+                                "{0:#,#}", value))
+        ' Displays 1,234,567,890      
+
+        Console.WriteLine(value.ToString("#,##0,,", CultureInfo.InvariantCulture))
+        Console.WriteLine(String.Format(CultureInfo.InvariantCulture,
+                                "{0:#,##0,,}", value))
+        ' Displays 1,235
+        Console.WriteLine(value.ToString("#,###,,", CultureInfo.InvariantCulture))
+        Dim x As Integer
+        x = 3 And 7
+        Console.WriteLine(x)
+
+        Dim bool1 As Boolean = CBool(x)
+        Console.WriteLine("CBool(3) = " + bool1.ToString)
+        Console.WriteLine("True强制转换为数字: " + CDbl(True).ToString)
+        Console.WriteLine("False强制转换为数字: " + CDbl(False).ToString)
 
     End Sub
 End Class

@@ -79,7 +79,7 @@ Partial Class FrmCaculator
         'LblCurrent
         '
         Me.LblCurrent.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.LblCurrent.Font = New System.Drawing.Font("Agency FB", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblCurrent.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblCurrent.ForeColor = System.Drawing.Color.Black
         Me.LblCurrent.Location = New System.Drawing.Point(0, 41)
         Me.LblCurrent.Name = "LblCurrent"
