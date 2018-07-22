@@ -28,7 +28,7 @@ Partial Class FrmCaculator
         Me.BtnEqual = New System.Windows.Forms.Button()
         Me.Btn0 = New System.Windows.Forms.Button()
         Me.BtnPoint = New System.Windows.Forms.Button()
-        Me.BtnPlusMinus = New System.Windows.Forms.Button()
+        Me.BtnPN = New System.Windows.Forms.Button()
         Me.BtnPlus = New System.Windows.Forms.Button()
         Me.Btn2 = New System.Windows.Forms.Button()
         Me.Btn3 = New System.Windows.Forms.Button()
@@ -121,16 +121,18 @@ Partial Class FrmCaculator
         Me.BtnPoint.Text = "."
         Me.BtnPoint.UseVisualStyleBackColor = True
         '
-        'BtnPlusMinus
+        'BtnPN
         '
-        Me.BtnPlusMinus.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.BtnPlusMinus.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnPlusMinus.Location = New System.Drawing.Point(3, 283)
-        Me.BtnPlusMinus.Name = "BtnPlusMinus"
-        Me.BtnPlusMinus.Size = New System.Drawing.Size(50, 55)
-        Me.BtnPlusMinus.TabIndex = 10
-        Me.BtnPlusMinus.Text = "±"
-        Me.BtnPlusMinus.UseVisualStyleBackColor = True
+        Me.BtnPN.AccessibleDescription = "Positive And Negative"
+        Me.BtnPN.AccessibleName = "正负符号"
+        Me.BtnPN.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BtnPN.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.BtnPN.Location = New System.Drawing.Point(3, 283)
+        Me.BtnPN.Name = "BtnPN"
+        Me.BtnPN.Size = New System.Drawing.Size(50, 55)
+        Me.BtnPN.TabIndex = 10
+        Me.BtnPN.Text = "±"
+        Me.BtnPN.UseVisualStyleBackColor = True
         '
         'BtnPlus
         '
@@ -300,12 +302,12 @@ Partial Class FrmCaculator
         'BtnBackspace
         '
         Me.BtnBackspace.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.BtnBackspace.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.BtnBackspace.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.BtnBackspace.Location = New System.Drawing.Point(115, 59)
         Me.BtnBackspace.Name = "BtnBackspace"
         Me.BtnBackspace.Size = New System.Drawing.Size(50, 50)
         Me.BtnBackspace.TabIndex = 18
-        Me.BtnBackspace.Text = "退格"
+        Me.BtnBackspace.Text = "←"
         Me.BtnBackspace.UseVisualStyleBackColor = True
         '
         'Btn9
@@ -363,7 +365,7 @@ Partial Class FrmCaculator
         Me.TableLayoutPanel1.Controls.Add(Me.BtnPct, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.BtnSqrt, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.BtnSqr, 2, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.BtnPlusMinus, 0, 5)
+        Me.TableLayoutPanel1.Controls.Add(Me.BtnPN, 0, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.BtnReciprocal, 3, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.BtnPlus, 3, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.BtnCe, 0, 1)
@@ -418,7 +420,7 @@ Partial Class FrmCaculator
     Friend WithEvents BtnEqual As Button
     Friend WithEvents Btn0 As Button
     Friend WithEvents BtnPoint As Button
-    Friend WithEvents BtnPlusMinus As Button
+    Friend WithEvents BtnPN As Button
     Friend WithEvents BtnPlus As Button
     Friend WithEvents Btn2 As Button
     Friend WithEvents Btn3 As Button
