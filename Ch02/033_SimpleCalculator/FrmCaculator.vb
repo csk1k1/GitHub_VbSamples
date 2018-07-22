@@ -1,7 +1,5 @@
-﻿Imports System.Globalization
-Imports System.Numerics
-'Imports System.Globalization.NumberFormatInfo
-
+﻿Imports System.Numerics
+Imports System.Globalization.NumberFormatInfo
 Imports Microsoft.VisualBasic.CallType
 Imports System.Text.RegularExpressions
 Imports System.Math
@@ -18,7 +16,7 @@ Public Class FrmCaculator
     Private strOp As String = String.Empty
     Private inputs() As String = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "*", "/", "^"}
     ' Get decimal separator.
-    Private decimalSeparator As String = NumberFormatInfo.CurrentInfo.NumberDecimalSeparator
+    Private decimalSeparator As String = CurrentInfo.NumberDecimalSeparator
     Private pattern As String
     Dim intToFormat As Long
     Dim bigintToFormat As BigInteger = BigInteger.Zero
@@ -140,6 +138,7 @@ Public Class FrmCaculator
     End Sub
 
     Private Sub BtnPlus_Click(sender As Object, e As EventArgs) Handles BtnPlus.Click
+        Prev = Current
 
     End Sub
 
