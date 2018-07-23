@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "022_WeightedAverage", "022_计算加权平均值\022_WeightedAverage.vbproj", "{C643D1B5-C3BF-46C5-BFA4-06D00FA110E5}"
-EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "023_RmbConverter", "023_RmbConverter\023_RmbConverter.vbproj", "{55086B20-1287-4528-8DCA-FECFF2983E21}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "024_CaseConverter", "024_CaseConverter\024_CaseConverter.vbproj", "{60D0F5E0-034C-4767-8BEF-9065967D4F1E}"
@@ -12,10 +10,6 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "025_ShutDown", "025_ShutDown\025_ShutDown.vbproj", "{D95F53C1-268C-4CD7-9BB6-D10CC87ADE28}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "026_NumStrConverter", "026_NumStrConverter\026_NumStrConverter.vbproj", "{B71BB5C7-4C03-420E-8A1A-F4F68DD67740}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "027_文本字数统计", "027_文本字数统计\027_文本字数统计.vbproj", "{FC016AE2-F244-4C0D-8F74-80F7DA4B6B9C}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "028_一封家书", "028_一封家书\028_一封家书.vbproj", "{1707CFA6-355B-4251-A72E-AD0689516A4E}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "029_Grade Generater", "029_If\029_Grade Generater.vbproj", "{B4A612FB-2A69-41DE-A0F3-F9D93924E2C3}"
 EndProject
@@ -27,16 +21,18 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "032_SelectCase", "032_Selec
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "033_SimpleCalculator", "033_SimpleCalculator\033_SimpleCalculator.vbproj", "{EDB59789-09E2-4D10-BB72-7D4278D64B56}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "022_WeightedAverage", "022_WeightedAverage\022_WeightedAverage.vbproj", "{C643D1B5-C3BF-46C5-BFA4-06D00FA110E5}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "027_TextWordsCounter", "027_TextWordsCounter\027_TextWordsCounter.vbproj", "{FC016AE2-F244-4C0D-8F74-80F7DA4B6B9C}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "028_LetterHome", "028_LetterHome\028_LetterHome.vbproj", "{1707CFA6-355B-4251-A72E-AD0689516A4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C643D1B5-C3BF-46C5-BFA4-06D00FA110E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C643D1B5-C3BF-46C5-BFA4-06D00FA110E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C643D1B5-C3BF-46C5-BFA4-06D00FA110E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C643D1B5-C3BF-46C5-BFA4-06D00FA110E5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{55086B20-1287-4528-8DCA-FECFF2983E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{55086B20-1287-4528-8DCA-FECFF2983E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55086B20-1287-4528-8DCA-FECFF2983E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,14 +49,6 @@ Global
 		{B71BB5C7-4C03-420E-8A1A-F4F68DD67740}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B71BB5C7-4C03-420E-8A1A-F4F68DD67740}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B71BB5C7-4C03-420E-8A1A-F4F68DD67740}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC016AE2-F244-4C0D-8F74-80F7DA4B6B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC016AE2-F244-4C0D-8F74-80F7DA4B6B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC016AE2-F244-4C0D-8F74-80F7DA4B6B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC016AE2-F244-4C0D-8F74-80F7DA4B6B9C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1707CFA6-355B-4251-A72E-AD0689516A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1707CFA6-355B-4251-A72E-AD0689516A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1707CFA6-355B-4251-A72E-AD0689516A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1707CFA6-355B-4251-A72E-AD0689516A4E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B4A612FB-2A69-41DE-A0F3-F9D93924E2C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B4A612FB-2A69-41DE-A0F3-F9D93924E2C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4A612FB-2A69-41DE-A0F3-F9D93924E2C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,6 +69,18 @@ Global
 		{EDB59789-09E2-4D10-BB72-7D4278D64B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDB59789-09E2-4D10-BB72-7D4278D64B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDB59789-09E2-4D10-BB72-7D4278D64B56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C643D1B5-C3BF-46C5-BFA4-06D00FA110E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C643D1B5-C3BF-46C5-BFA4-06D00FA110E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C643D1B5-C3BF-46C5-BFA4-06D00FA110E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C643D1B5-C3BF-46C5-BFA4-06D00FA110E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC016AE2-F244-4C0D-8F74-80F7DA4B6B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC016AE2-F244-4C0D-8F74-80F7DA4B6B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC016AE2-F244-4C0D-8F74-80F7DA4B6B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC016AE2-F244-4C0D-8F74-80F7DA4B6B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1707CFA6-355B-4251-A72E-AD0689516A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1707CFA6-355B-4251-A72E-AD0689516A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1707CFA6-355B-4251-A72E-AD0689516A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1707CFA6-355B-4251-A72E-AD0689516A4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
