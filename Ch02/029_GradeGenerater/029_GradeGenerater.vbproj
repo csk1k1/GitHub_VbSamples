@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B4A612FB-2A69-41DE-A0F3-F9D93924E2C3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>_029_Grade_Generater.My.MyApplication</StartupObject>
-    <RootNamespace>_029_Grade_Generater</RootNamespace>
-    <AssemblyName>029_Grade Generater</AssemblyName>
+    <StartupObject>_029_GradeGenerater.My.MyApplication</StartupObject>
+    <RootNamespace>_029_GradeGenerater</RootNamespace>
+    <AssemblyName>029_GradeGenerater</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>029_Grade Generater.xml</DocumentationFile>
+    <DocumentationFile>029_GradeGenerater.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -31,7 +31,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>029_Grade Generater.xml</DocumentationFile>
+    <DocumentationFile>029_GradeGenerater.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
