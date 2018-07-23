@@ -44,5 +44,4 @@ Friend Module Calc
                 Current = Decimal.Divide(1, Current)
         End Select
     End Sub
-
 End Module
