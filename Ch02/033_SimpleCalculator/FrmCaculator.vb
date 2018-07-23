@@ -1,19 +1,18 @@
 ﻿Imports System.Numerics
 Imports System.Globalization.NumberFormatInfo
-Imports Microsoft.VisualBasic.CallType
-Imports System.Text.RegularExpressions
-Imports System.Math
-Imports Microsoft.VisualBasic.VBMath
+'Imports Microsoft.VisualBasic.CallType
+'Imports System.Text.RegularExpressions
+'Imports System.Math
+'Imports Microsoft.VisualBasic.VBMath
 
 Public Class FrmCaculator
 
     Private snd As Object
     Private evt As EventArgs
     Private strPrev As String = String.Empty
-    Private strCurrent As String = "0"
-    Private prevValue As Decimal
-    Private currentValue As Decimal = Decimal.Zero
-    Private strOp As String = String.Empty
+    'Private prevValue As Decimal
+    'Private currentValue As Decimal = Decimal.Zero
+    'Private strOp As String = String.Empty
     Private inputs() As String = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "*", "/", "^"}
     ' Get decimal separator.
     Private decimalSeparator As String = CurrentInfo.NumberDecimalSeparator
@@ -22,28 +21,45 @@ Public Class FrmCaculator
     Dim bigintToFormat As BigInteger = BigInteger.Zero
     Dim floatToFormat As Double
 
-    Private Property Current() As Decimal
+    'Private Property Current() As Decimal
+    '    Get
+    '        Return currentValue
+    '    End Get
+    '    Set(value As Decimal)
+    '        currentValue = value
+    '    End Set
+    'End Property
+
+    'Private Property Prev() As Decimal
+    '    Get
+    '        Return prevValue
+    '    End Get
+    '    Set(value As Decimal)
+    '        prevValue = value
+    '    End Set
+    'End Property
+    Public Property TxtCurrent As String
         Get
-            Return currentValue
+            Return LblCurrent.Text
         End Get
-        Set(value As Decimal)
-            currentValue = value
+        Set(value As String)
+            LblCurrent.Text = value
         End Set
     End Property
 
-    Private Property Prev() As Decimal
+    Public Property TxtPrev As String
         Get
-            Return prevValue
+            Return LblPrev.Text
         End Get
-        Set(value As Decimal)
-            prevValue = value
+        Set(value As String)
+            LblPrev.Text = value
         End Set
     End Property
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.KeyPreview = True '确定窗体上控件的按键事件向窗体注册，这步一定要有的
-        LblCurrent.Text = "0"
-        LblPrev.Text = ""
+        TxtCurrent = "0"
+        TxtPrev = ""
     End Sub
 
 
@@ -54,7 +70,7 @@ Public Class FrmCaculator
 
     '判断当前算式是否为非0, 如果非0返回TRUE,如果为0返回FALSE
     Private Function started() As Boolean
-        If Equals(strCurrent, "0") Then
+        If Equals(TxtCurrent, "0") Then
             Return False
         Else
             Return True
@@ -63,23 +79,24 @@ Public Class FrmCaculator
     End Function
 
     Private Sub Entry(n As String)
-        If Not strCurrent.Length < 12 Then
+        If Not TxtCurrent.Length < 12 Then
             Exit Sub
         End If
 
         '如果初值已经变为非零数，则新数字加在strCurrent最后；如果初值还是零则用新值赋值给strCurrent
-        If started() OrElse Equals(n, decimalSeparator) OrElse n = decimalSeparator Then
+        If started() OrElse n = decimalSeparator OrElse Equals(n, decimalSeparator) Then
             'strCurrent = strCurrent + n
-            strCurrent += n
+            TxtCurrent += n
         Else
-            strCurrent = n
+            TxtCurrent = n
         End If
 
-        LblCurrent.Text = strCurrent
-        If strCurrent.Last <> decimalSeparator Then
+        LblCurrent.Text = TxtCurrent
+
+        If TxtCurrent.Last <> decimalSeparator Then
             'If Strings.Right(strCurrent, 1) <> decimalSeparator Then
             'End If
-            Current = CDec(strCurrent)            'Current = Decimal.Parse(strCurrent)
+            Current = CDec(TxtCurrent)            'Current = Decimal.Parse(strCurrent)
         End If
     End Sub
 
@@ -127,12 +144,12 @@ Public Class FrmCaculator
         'Dim signN = NumberFormatInfo.CurrentInfo.NegativeSign
         '乘-1: uses the Negate method to change the sign of several Decimal values.
         Current = Decimal.Negate(Current)
-        strCurrent = Current.ToString  '不要用CStr(),转化的正数字符串带有前导空格
-        LblCurrent.Text = strCurrent
+        TxtCurrent = Current.ToString  '不要用CStr(),转化的正数字符串带有前导空格
+        LblCurrent.Text = TxtCurrent
     End Sub
 
     Private Sub BtnPoint_Click(sender As Object, e As EventArgs) Handles BtnPoint.Click
-        If InStr(strCurrent, decimalSeparator) = 0 Then
+        If InStr(TxtCurrent, decimalSeparator) = 0 Then
             Entry(decimalSeparator)
         End If
     End Sub
@@ -155,22 +172,22 @@ Public Class FrmCaculator
     End Sub
 
     Private Sub BtnBackspace_Click(sender As Object, e As EventArgs) Handles BtnBackspace.Click
-        strCurrent.Remove(strCurrent.Length - 1)
+        TxtCurrent.Remove(TxtCurrent.Length - 1)
     End Sub
 
     Private Sub BtnC_Click(sender As Object, e As EventArgs) Handles BtnC.Click
         strPrev = Nothing
         Prev = Nothing
         LblPrev.Text = strPrev
-        strCurrent = "0"
+        TxtCurrent = "0"
         Current = Decimal.Zero
-        LblCurrent.Text = strCurrent
+        LblCurrent.Text = TxtCurrent
     End Sub
 
     Private Sub BtnCe_Click(sender As Object, e As EventArgs) Handles BtnCe.Click
-        strCurrent = "0"
+        TxtCurrent = "0"
         Current = Decimal.Zero
-        LblCurrent.Text = strCurrent
+        LblCurrent.Text = TxtCurrent
     End Sub
 
     Private Sub BtnReciprocal_Click(sender As Object, e As EventArgs) Handles BtnReciprocal.Click
