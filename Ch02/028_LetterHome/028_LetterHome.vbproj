@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1707CFA6-355B-4251-A72E-AD0689516A4E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>_028_一封家书.My.MyApplication</StartupObject>
-    <RootNamespace>_028_一封家书</RootNamespace>
-    <AssemblyName>028_一封家书</AssemblyName>
+    <StartupObject>_028_LetterHome.My.MyApplication</StartupObject>
+    <RootNamespace>_028_LetterHome</RootNamespace>
+    <AssemblyName>028_LetterHome</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>028_一封家书.xml</DocumentationFile>
+    <DocumentationFile>028_LetterHome.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -31,7 +31,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>028_一封家书.xml</DocumentationFile>
+    <DocumentationFile>028_LetterHome.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>

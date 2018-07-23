@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FC016AE2-F244-4C0D-8F74-80F7DA4B6B9C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>_027_文本字数统计.My.MyApplication</StartupObject>
-    <RootNamespace>_027_文本字数统计</RootNamespace>
-    <AssemblyName>027_文本字数统计</AssemblyName>
+    <StartupObject>_027_TextWordsCounter.My.MyApplication</StartupObject>
+    <RootNamespace>_027_TextWordsCounter</RootNamespace>
+    <AssemblyName>027_TextWordsCounter</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>027_文本字数统计.xml</DocumentationFile>
+    <DocumentationFile>027_TextWordsCounter.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -31,7 +31,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>027_文本字数统计.xml</DocumentationFile>
+    <DocumentationFile>027_TextWordsCounter.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>

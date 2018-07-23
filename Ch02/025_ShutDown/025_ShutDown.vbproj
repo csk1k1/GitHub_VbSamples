@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D95F53C1-268C-4CD7-9BB6-D10CC87ADE28}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Sample025.My.MyApplication</StartupObject>
-    <RootNamespace>Sample025</RootNamespace>
-    <AssemblyName>Sample025</AssemblyName>
+    <StartupObject>_025_ShutDown.My.MyApplication</StartupObject>
+    <RootNamespace>_025_ShutDown</RootNamespace>
+    <AssemblyName>025_ShutDown</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Sample025.xml</DocumentationFile>
+    <DocumentationFile>025_ShutDown.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -31,7 +31,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Sample025.xml</DocumentationFile>
+    <DocumentationFile>025_ShutDown.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
