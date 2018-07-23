@@ -10,4 +10,5 @@ txtBananaSales.Text, txtOrangePrice.Text, txtOrangeSales.Text)
         sum = Math.Round(sum, 2)
         Return sum
     End Function
+
 End Class
