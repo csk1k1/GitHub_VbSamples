@@ -24,7 +24,7 @@ Friend Module Calc
         End Set
     End Property
 
-    Sub Calc()
+    Sub SimpleCalc()
         Select Case oprt
             Case "+"
                 Current = Decimal.Add(Prev, Current)
