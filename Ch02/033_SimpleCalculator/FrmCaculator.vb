@@ -239,12 +239,9 @@ Public Class FrmCaculator
     End Sub
 
     Private Sub BtnBackspace_Click(sender As Object, e As EventArgs) Handles BtnBackspace.Click
-        If TxtCurrent.Length > 1 Then
+        If Current > 0 Then
             TxtCurrent.Remove(TxtCurrent.Length - 1)
-            Current = CDec(TxtCurrent)
-        ElseIf TxtCurrent.Length = 1 Then
-            TxtCurrent = "0"
-            Current = 0
+            Current = IIf(TxtCurrent = "", 0, CDec(TxtCurrent))
         End If
     End Sub
 
@@ -275,6 +272,48 @@ Public Class FrmCaculator
     Private Sub BtnSqrt_Click(sender As Object, e As EventArgs) Handles BtnSqrt.Click
 
     End Sub
+
+
+    'Sub OprtHandler(ByVal strO As String)
+    '    Try
+    '        If Array.IndexOf(oprts, strO) >= 0 Then
+    '            Select Case strO
+    '                Case "%"
+    '                    StrExpCur = "(" + Current.ToString + ")/100"
+    '                    StrExp = StrExpPrev + StrExpCur
+    '                    Current = SimpleCalc("%")
+
+    '                Case "sqrt"
+
+    '                Case "sqr"
+
+    '                Case "reciprocal"
+    '                    Oprt = String.Empty
+    '                    Prev = Decimal.Zero
+    '                    SimpleCalc(strO)
+    '                Case "+"
+
+    '                Case "-"
+
+    '                Case "*"
+
+    '                Case "/"
+    '                    If Oprt.Length > 0 Then
+    '                        SimpleCalc(Oprt)
+    '                        Prev = Current
+    '                        Current = 0
+    '                        Oprt = strO
+    '                    Else
+    '                        Prev = Current
+    '                        Current = 0
+    '                        Oprt = strO
+    '                    End If
+    '            End Select
+    '        End If
+    '    Catch ex As Exception
+
+    '    End Try
+    'End Sub
 
     Private Sub FrmCaculator_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
 

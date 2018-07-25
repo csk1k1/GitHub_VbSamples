@@ -6,8 +6,8 @@ Friend Module Calc
     'Private currentVal As Decimal
     'Public result As Decimal
 
-    Property Current As Decimal
-    Property Prev As Decimal
+    Property Current As Decimal = 0
+    Property Prev As Decimal = 0
     Property StrCurrent As String = ""
     Property StrExp As String = ""
     Property StrExpPrev As String = ""
@@ -25,7 +25,7 @@ Friend Module Calc
             End If
         End Set
     End Property
-
+#Region "Code: Arithmetic method"
     Function Divide100(ByVal d As Decimal) As Decimal
         Try
             Divide100 = Decimal.Divide(d, 100)
@@ -97,7 +97,8 @@ Friend Module Calc
             Return Nothing
         End Try
     End Function
-
+#End Region
+#Region "Code Recycle"
     'Sub OprtHandler(ByVal strO As String)
     '    Try
     '        If Array.IndexOf(oprts, strO) >= 0 Then
@@ -139,24 +140,76 @@ Friend Module Calc
     '    End Try
     'End Sub
 
-    'Function SimpleCalc(ByVal strO As String)
-    '    Select Case strO
-    '        Case "+"
-    '            SimpleCalc = Decimal.Add(Prev, Current)
-    '        Case "-"
-    '            SimpleCalc = Decimal.Subtract(Prev, Current)
-    '        Case "*"
-    '            SimpleCalc = Decimal.Multiply(Prev, Current)
-    '        Case "/"
-    '            SimpleCalc = Decimal.Divide(Prev, Current)
-    '        Case "%"
-    '            SimpleCalc = Decimal.Divide(Current, 100)
-    '        Case "sqrt"
-    '            SimpleCalc = Decimal.Parse(Math.Sqrt(Current))
-    '        Case "sqr"
-    '            SimpleCalc = Decimal.Parse(Math.Pow(Current, 2))
-    '        Case "reciprocal"
-    '            SimpleCalc = Decimal.Divide(1, Current)
-    '    End Select
-    'End Function
+#End Region
+    Sub SimpleCalc(ByVal strO As String)
+        'If Not Array.IndexOf(oprts, strO) >= 0 Then Exit Function
+        Select Case strO
+            Case "+"
+                Try
+                    Prev = Decimal.Add(Prev, Current)
+                Catch ex As Exception
+                    StrCurrent = "溢出"
+                    Reset()
+                End Try
+            Case "-"
+                Try
+                    Prev = Decimal.Subtract(Prev, Current)
+                Catch ex As Exception
+                    StrCurrent = "溢出"
+                    Reset()
+                End Try
+            Case "*"
+                Try
+                    Prev = Decimal.Multiply(Prev, Current)
+                Catch ex As Exception
+                    StrCurrent = "溢出"
+                    Reset()
+                End Try
+            Case "/"
+                Try
+                    Prev = Decimal.Divide(Prev, Current)
+                Catch ex As Exception
+                    StrCurrent = IIf(Current = 0, "除数不能为零", "溢出")
+                    Reset()
+                End Try
+            Case "%"
+                Try
+                    Current = Decimal.Divide(Current, 100)
+                Catch ex As Exception
+                    StrCurrent = "溢出"
+                    Reset()
+                End Try
+            Case "sqrt"
+                Try
+                    Current = Decimal.Parse(Math.Sqrt(Current))
+                Catch ex As Exception
+                    StrCurrent = IIf(Current < 0, "亲,别用负数求平方根好吗", "溢出")
+                    Reset()
+                End Try
+            Case "sqr"
+                Try
+                    Current = Decimal.Parse(Math.Pow(Current, 2))
+                Catch ex As Exception
+                    StrCurrent = "溢出"
+                    Reset()
+                End Try
+            Case "reciprocal"
+                Try
+                    Current = Decimal.Divide(1, Current)
+                    StrExpCur = IIf(StrExpCur = "", "1 /(" & Current.ToString & ")", "1 /(" & StrExpCur & ")")  '表达式显示方式
+                Catch ex As Exception
+                    StrCurrent = IIf(Current = 0, "除数不能为零", "溢出")
+                    Reset()
+                End Try
+        End Select
+    End Sub
+
+    Sub Reset()
+        Current = 0
+        Prev = 0
+        StrExp = ""
+        StrExpPrev = ""
+        StrExpCur = ""
+        Oprt = ""
+    End Sub
 End Module
