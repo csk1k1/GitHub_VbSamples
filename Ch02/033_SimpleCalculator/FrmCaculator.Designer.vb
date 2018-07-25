@@ -23,7 +23,7 @@ Partial Class FrmCaculator
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.PnlShow = New System.Windows.Forms.Panel()
-        Me.LblPrev = New System.Windows.Forms.Label()
+        Me.LblEx = New System.Windows.Forms.Label()
         Me.LblCurrent = New System.Windows.Forms.Label()
         Me.BtnEqual = New System.Windows.Forms.Button()
         Me.Btn0 = New System.Windows.Forms.Button()
@@ -56,7 +56,7 @@ Partial Class FrmCaculator
         '
         'PnlShow
         '
-        Me.PnlShow.Controls.Add(Me.LblPrev)
+        Me.PnlShow.Controls.Add(Me.LblEx)
         Me.PnlShow.Controls.Add(Me.LblCurrent)
         Me.PnlShow.Dock = System.Windows.Forms.DockStyle.Top
         Me.PnlShow.Location = New System.Drawing.Point(0, 0)
@@ -64,17 +64,17 @@ Partial Class FrmCaculator
         Me.PnlShow.Size = New System.Drawing.Size(224, 100)
         Me.PnlShow.TabIndex = 25
         '
-        'LblPrev
+        'LblEx
         '
-        Me.LblPrev.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.LblEx.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LblPrev.Font = New System.Drawing.Font("Agency FB", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblPrev.ForeColor = System.Drawing.Color.Gray
-        Me.LblPrev.Location = New System.Drawing.Point(0, 0)
-        Me.LblPrev.Name = "LblPrev"
-        Me.LblPrev.Size = New System.Drawing.Size(224, 41)
-        Me.LblPrev.TabIndex = 26
-        Me.LblPrev.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblEx.Font = New System.Drawing.Font("Agency FB", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblEx.ForeColor = System.Drawing.Color.Gray
+        Me.LblEx.Location = New System.Drawing.Point(0, 0)
+        Me.LblEx.Name = "LblEx"
+        Me.LblEx.Size = New System.Drawing.Size(224, 41)
+        Me.LblEx.TabIndex = 26
+        Me.LblEx.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LblCurrent
         '
@@ -443,6 +443,6 @@ Partial Class FrmCaculator
     Friend WithEvents Btn7 As Button
     Friend WithEvents LblCurrent As Label
     Friend WithEvents PnlShow As Panel
-    Friend WithEvents LblPrev As Label
+    Friend WithEvents LblEx As Label
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
 End Class
