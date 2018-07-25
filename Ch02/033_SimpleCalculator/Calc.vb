@@ -172,9 +172,17 @@ Friend Module Calc
                     StrCurrent = IIf(Current = 0, "除数不能为零", "溢出")
                     Reset()
                 End Try
+'以工资为例：          如果我们的工资大于800开始扣税， 那么应该怎么算呢？
+
+'第一步：            我们用3225-800 = 2425
+
+'第二步：2425-485（税钱）=1940
+
+'第三步：1940+800=2740（税后）
             Case "%"
                 Try
                     Current = Decimal.Divide(Current, 100)
+                    StrExpCur = IIf(StrExpCur = "", "1 /(" & Current.ToString & ")", "1 /(" & StrExpCur & ")")  '表达式显示方式
                 Catch ex As Exception
                     StrCurrent = "溢出"
                     Reset()
@@ -182,6 +190,7 @@ Friend Module Calc
             Case "sqrt"
                 Try
                     Current = Decimal.Parse(Math.Sqrt(Current))
+                    StrExpCur = IIf(StrExpCur = "", "sqrt(" & Current.ToString & ")", "sqrt(" & StrExpCur & ")")  '表达式显示方式
                 Catch ex As Exception
                     StrCurrent = IIf(Current < 0, "亲,别用负数求平方根好吗", "溢出")
                     Reset()
@@ -189,6 +198,7 @@ Friend Module Calc
             Case "sqr"
                 Try
                     Current = Decimal.Parse(Math.Pow(Current, 2))
+                    StrExpCur = IIf(StrExpCur = "", "sqr(" & Current.ToString & ")", "sqr(" & StrExpCur & ")")  '表达式显示方式
                 Catch ex As Exception
                     StrCurrent = "溢出"
                     Reset()
