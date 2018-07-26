@@ -141,6 +141,11 @@ Friend Module Calc
     'End Sub
 
 #End Region
+
+    ''' <summary>
+    ''' 计算过程
+    ''' </summary>
+    ''' <param name="strO">算术运算符</param>
     Sub SimpleCalc(ByVal strO As String)
         'If Not Array.IndexOf(oprts, strO) >= 0 Then Exit Function
         Select Case strO
@@ -172,16 +177,21 @@ Friend Module Calc
                     StrCurrent = IIf(Current = 0, "除数不能为零", "溢出")
                     Reset()
                 End Try
-'以工资为例：          如果我们的工资大于800开始扣税， 那么应该怎么算呢？
 
-'第一步：            我们用3225-800 = 2425
-
-'第二步：2425-485（税钱）=1940
-
-'第三步：1940+800=2740（税后）
+            '---------------------  % 的用法说明  -------------------------------------/
+            '%需要配合+-*/使用：输入a + b%，等于表达式a+a*b%                           '
+            '以工资为例：          如果我们的工资大于800开始扣税， 那么应该怎么算呢？  '
+            '第一步：            我们用3225-800 = 2425                                 '
+            '第二步：2425-485（税钱）=1940                                             '
+            '第三步：1940+800=2740（税后）                                             '
+            '--------------------------------------------------------------------------*/
             Case "%"
+                If Array.IndexOf({"+", "-", "*", "/"}, Oprt) < 0 Then
+                    StrCurrent = "%需要配合+-*/使用：输入a + b%，等于表达式a+a*b%"
+                    Exit Sub
+                End If
                 Try
-                    Current = Decimal.Divide(Current, 100)
+                    Current = Prev * Current / 100
                     StrExpCur = IIf(StrExpCur = "", "1 /(" & Current.ToString & ")", "1 /(" & StrExpCur & ")")  '表达式显示方式
                 Catch ex As Exception
                     StrCurrent = "溢出"
