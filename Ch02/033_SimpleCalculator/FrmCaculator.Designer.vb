@@ -24,10 +24,10 @@ Partial Class FrmCaculator
     Private Sub InitializeComponent()
         Me.PnlShow = New System.Windows.Forms.Panel()
         Me.LblEx = New System.Windows.Forms.Label()
-        Me.LblCurrent = New System.Windows.Forms.Label()
+        Me.LblResult = New System.Windows.Forms.Label()
         Me.BtnEqual = New System.Windows.Forms.Button()
         Me.Btn0 = New System.Windows.Forms.Button()
-        Me.BtnPoint = New System.Windows.Forms.Button()
+        Me.BtnDot = New System.Windows.Forms.Button()
         Me.BtnPN = New System.Windows.Forms.Button()
         Me.BtnPlus = New System.Windows.Forms.Button()
         Me.Btn2 = New System.Windows.Forms.Button()
@@ -57,7 +57,7 @@ Partial Class FrmCaculator
         'PnlShow
         '
         Me.PnlShow.Controls.Add(Me.LblEx)
-        Me.PnlShow.Controls.Add(Me.LblCurrent)
+        Me.PnlShow.Controls.Add(Me.LblResult)
         Me.PnlShow.Dock = System.Windows.Forms.DockStyle.Top
         Me.PnlShow.Location = New System.Drawing.Point(0, 0)
         Me.PnlShow.Name = "PnlShow"
@@ -76,17 +76,17 @@ Partial Class FrmCaculator
         Me.LblEx.TabIndex = 26
         Me.LblEx.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'LblCurrent
+        'LblResult
         '
-        Me.LblCurrent.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.LblCurrent.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblCurrent.ForeColor = System.Drawing.Color.Black
-        Me.LblCurrent.Location = New System.Drawing.Point(0, 41)
-        Me.LblCurrent.Name = "LblCurrent"
-        Me.LblCurrent.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.LblCurrent.Size = New System.Drawing.Size(224, 59)
-        Me.LblCurrent.TabIndex = 27
-        Me.LblCurrent.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblResult.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.LblResult.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblResult.ForeColor = System.Drawing.Color.Black
+        Me.LblResult.Location = New System.Drawing.Point(0, 41)
+        Me.LblResult.Name = "LblResult"
+        Me.LblResult.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.LblResult.Size = New System.Drawing.Size(224, 59)
+        Me.LblResult.TabIndex = 27
+        Me.LblResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'BtnEqual
         '
@@ -110,16 +110,16 @@ Partial Class FrmCaculator
         Me.Btn0.Text = "0"
         Me.Btn0.UseVisualStyleBackColor = True
         '
-        'BtnPoint
+        'BtnDot
         '
-        Me.BtnPoint.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.BtnPoint.Font = New System.Drawing.Font("宋体", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.BtnPoint.Location = New System.Drawing.Point(115, 283)
-        Me.BtnPoint.Name = "BtnPoint"
-        Me.BtnPoint.Size = New System.Drawing.Size(50, 55)
-        Me.BtnPoint.TabIndex = 11
-        Me.BtnPoint.Text = "."
-        Me.BtnPoint.UseVisualStyleBackColor = True
+        Me.BtnDot.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BtnDot.Font = New System.Drawing.Font("宋体", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.BtnDot.Location = New System.Drawing.Point(115, 283)
+        Me.BtnDot.Name = "BtnDot"
+        Me.BtnDot.Size = New System.Drawing.Size(50, 55)
+        Me.BtnDot.TabIndex = 11
+        Me.BtnDot.Text = "."
+        Me.BtnDot.UseVisualStyleBackColor = True
         '
         'BtnPN
         '
@@ -383,7 +383,7 @@ Partial Class FrmCaculator
         Me.TableLayoutPanel1.Controls.Add(Me.Btn2, 1, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.Btn6, 2, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.Btn5, 1, 3)
-        Me.TableLayoutPanel1.Controls.Add(Me.BtnPoint, 2, 5)
+        Me.TableLayoutPanel1.Controls.Add(Me.BtnDot, 2, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.Btn0, 1, 5)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 100)
@@ -419,7 +419,7 @@ Partial Class FrmCaculator
     End Sub
     Friend WithEvents BtnEqual As Button
     Friend WithEvents Btn0 As Button
-    Friend WithEvents BtnPoint As Button
+    Friend WithEvents BtnDot As Button
     Friend WithEvents BtnPN As Button
     Friend WithEvents BtnPlus As Button
     Friend WithEvents Btn2 As Button
@@ -441,7 +441,7 @@ Partial Class FrmCaculator
     Friend WithEvents BtnPct As Button
     Friend WithEvents BtnCe As Button
     Friend WithEvents Btn7 As Button
-    Friend WithEvents LblCurrent As Label
+    Friend WithEvents LblResult As Label
     Friend WithEvents PnlShow As Panel
     Friend WithEvents LblEx As Label
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel

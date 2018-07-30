@@ -1,4 +1,5 @@
 ﻿Imports System.Globalization.NumberFormatInfo
+Imports System.Decimal
 
 '''////////////////////////////////////////////////////////////////////////////////////////////////////
 ''' <summary>   A calculate. </summary>
@@ -18,95 +19,35 @@ Friend Module Calc
 
     Property Current As Decimal = 0
     Property Prev As Decimal = 0
-    Property StrCurrent As String = ""
+    Property PrevCurrent As Decimal
+    Property StrResult As String = ""
     Property StrExp As String = ""
-    Property StrExpPrev As String = ""
-    Property StrExpCur As String = ""
+    Property StrPrevExp As String = ""
+    Property StrCurrExp As String = ""
+    Property Oprt As String = ""
+    Public oprts As String() = {"+", "-", "*", "/"}
 
-    Private _oprt As String = String.Empty
-    Public oprts As String() = {"+", "-", "*", "/", "%", "sqrt", "sqr", "reciprocal"}
-    Property Oprt As String
-        Get
-            Return _oprt
-        End Get
-        Set(value As String)
-            If Not Len(_oprt) > 0 Then
-                _oprt = value
-            End If
-        End Set
-    End Property
 #Region "Code: Arithmetic method"
-    Function Divide100(ByVal d As Decimal) As Decimal
-        Try
-            Divide100 = Decimal.Divide(d, 100)
-        Catch ex As Exception
-            StrCurrent = "溢出"
-            Return Nothing
-        End Try
-    End Function
 
     Function Sqrt(ByVal d As Decimal) As Decimal
         Try
-            Sqrt = Decimal.Parse(Math.Sqrt(d))
+            Sqrt = Parse(Math.Sqrt(d))
         Catch ex As Exception
-            StrCurrent = IIf(d < 0, "Invalid Data", "溢出")
+            StrResult = IIf(d < 0, "Invalid Data", "溢出")
             Return Nothing
         End Try
     End Function
 
     Function Sqr(ByVal d As Decimal) As Decimal
         Try
-            Sqr = Decimal.Parse(Math.Pow(d, 2))
+            Sqr = Parse(Math.Pow(d, 2))
         Catch ex As Exception
-            StrCurrent = "溢出"
+            StrResult = "溢出"
             Return Nothing
         End Try
     End Function
 
-    Function Reciprocal(ByVal d As Decimal) As Decimal
-        Try
-            Reciprocal = Decimal.Divide(1, d)
-        Catch ex As Exception
-            StrCurrent = IIf(d = 0, "除数不能为零", "溢出")
-            Return Nothing
-        End Try
-    End Function
 
-    Function Add(ByVal a As Decimal, ByVal b As Decimal) As Decimal
-        Try
-            Add = Decimal.Add(a, b)
-        Catch ex As Exception
-            StrCurrent = "溢出"
-            Return Nothing
-        End Try
-    End Function
-
-    Function Subtract(ByVal a As Decimal, ByVal b As Decimal) As Decimal
-        Try
-            Return Decimal.Subtract(a, b)
-        Catch ex As Exception
-            StrCurrent = "溢出"
-            Return Nothing
-        End Try
-    End Function
-
-    Function Multiply(ByVal a As Decimal, ByVal b As Decimal) As Decimal
-        Try
-            Return Decimal.Multiply(a, b)
-        Catch ex As Exception
-            StrCurrent = "溢出"
-            Return Nothing
-        End Try
-    End Function
-
-    Function Divide(ByVal a As Decimal, ByVal b As Decimal) As Decimal
-        Try
-            Return Decimal.Divide(a, b)
-        Catch ex As Exception
-            StrCurrent = IIf(b = 0, "除数不能为零", "溢出")
-            Return Nothing
-        End Try
-    End Function
 #End Region
 #Region "Code Recycle"
     'Sub OprtHandler(ByVal strO As String)
@@ -163,28 +104,28 @@ Friend Module Calc
                 Try
                     Prev = Decimal.Add(Prev, Current)
                 Catch ex As Exception
-                    StrCurrent = "溢出"
+                    StrResult = "溢出"
                     Reset()
                 End Try
             Case "-"
                 Try
                     Prev = Decimal.Subtract(Prev, Current)
                 Catch ex As Exception
-                    StrCurrent = "溢出"
+                    StrResult = "溢出"
                     Reset()
                 End Try
             Case "*"
                 Try
-                    Prev = Decimal.Multiply(Prev, Current)
+                    Prev = Multiply(Prev, Current)
                 Catch ex As Exception
-                    StrCurrent = "溢出"
+                    StrResult = "溢出"
                     Reset()
                 End Try
             Case "/"
                 Try
                     Prev = Decimal.Divide(Prev, Current)
                 Catch ex As Exception
-                    StrCurrent = IIf(Current = 0, "除数不能为零", "溢出")
+                    StrResult = IIf(Current = 0, "除数不能为零", "溢出")
                     Reset()
                 End Try
 
@@ -197,38 +138,38 @@ Friend Module Calc
             '--------------------------------------------------------------------------*/
             Case "%"
                 If Array.IndexOf({"+", "-", "*", "/"}, Oprt) < 0 Then
-                    StrCurrent = "%需要配合+-*/使用：输入a + b%，等于表达式a+a*b%"
+                    StrResult = "%需要配合+-*/使用：输入a + b%，等于表达式a+a*b%"
                     Exit Sub
                 End If
                 Try
                     Current = Prev * Current / 100
-                    StrExpCur = IIf(StrExpCur = "", "1 /(" & Current.ToString & ")", "1 /(" & StrExpCur & ")")  '表达式显示方式
+                    StrCurrExp = IIf(StrCurrExp = "", "1 /(" & Current.ToString & ")", "1 /(" & StrCurrExp & ")")  '表达式显示方式
                 Catch ex As Exception
-                    StrCurrent = "溢出"
+                    StrResult = "溢出"
                     Reset()
                 End Try
             Case "sqrt"
                 Try
-                    Current = Decimal.Parse(Math.Sqrt(Current))
-                    StrExpCur = IIf(StrExpCur = "", "sqrt(" & Current.ToString & ")", "sqrt(" & StrExpCur & ")")  '表达式显示方式
+                    Current = Parse(Math.Sqrt(Current))
+                    StrCurrExp = IIf(StrCurrExp = "", "sqrt(" & Current.ToString & ")", "sqrt(" & StrCurrExp & ")")  '表达式显示方式
                 Catch ex As Exception
-                    StrCurrent = IIf(Current < 0, "亲,别用负数求平方根好吗", "溢出")
+                    StrResult = IIf(Current < 0, "亲,别用负数求平方根好吗", "溢出")
                     Reset()
                 End Try
             Case "sqr"
                 Try
-                    Current = Decimal.Parse(Math.Pow(Current, 2))
-                    StrExpCur = IIf(StrExpCur = "", "sqr(" & Current.ToString & ")", "sqr(" & StrExpCur & ")")  '表达式显示方式
+                    Current = Parse(Math.Pow(Current, 2))
+                    StrCurrExp = IIf(StrCurrExp = "", "sqr(" & Current.ToString & ")", "sqr(" & StrCurrExp & ")")  '表达式显示方式
                 Catch ex As Exception
-                    StrCurrent = "溢出"
+                    StrResult = "溢出"
                     Reset()
                 End Try
             Case "reciprocal"
                 Try
                     Current = Decimal.Divide(1, Current)
-                    StrExpCur = IIf(StrExpCur = "", "1 /(" & Current.ToString & ")", "1 /(" & StrExpCur & ")")  '表达式显示方式
+                    StrCurrExp = IIf(StrCurrExp = "", "1 /(" & Current.ToString & ")", "1 /(" & StrCurrExp & ")")  '表达式显示方式
                 Catch ex As Exception
-                    StrCurrent = IIf(Current = 0, "除数不能为零", "溢出")
+                    StrResult = IIf(Current = 0, "除数不能为零", "溢出")
                     Reset()
                 End Try
         End Select
@@ -238,8 +179,30 @@ Friend Module Calc
         Current = 0
         Prev = 0
         StrExp = ""
-        StrExpPrev = ""
-        StrExpCur = ""
         Oprt = ""
     End Sub
+
+    Function Result(ByVal op As String) As Decimal
+        Select Case op
+            Case "+"
+                Result = Decimal.Add(Prev, Current)
+            Case "-"
+                Result = Decimal.Subtract(Prev, Current)
+            Case "*"
+                Result = Multiply(PrevCurrent, Current)
+            Case "/"
+                Result = Divide(PrevCurrent, Current)
+            Case "%"
+                Result = Multiply(Prev, Current / 100)
+            Case "sqrt"
+                Result = Parse(Math.Sqrt(Current))
+            Case "sqr"
+                Result = Parse(Math.Pow(Current, 2))
+            Case "reciprocal"
+                Result = Decimal.Divide(1, Current)
+            Case Else
+                Exit Select
+        End Select
+        Return Result
+    End Function
 End Module
