@@ -13,20 +13,23 @@ Imports System.Decimal
 
 Friend Module Calc
 
+#Region "DeclareRecycle"
     'Private preVal As Decimal
     'Private currentVal As Decimal
     'Public result As Decimal
-
-    Property Current As Decimal = 0
-    Property Prev As Decimal = 0
-    Property PrevCurrent As Decimal
-    Property StrResult As String = ""
-    Property StrExp As String = ""
-    Property StrPrevExp As String = ""
-    Property StrCurrExp As String = ""
-    Property Oprt As String = ""
-    Public oprts As String() = {"+", "-", "*", "/"}
-
+    'Property PrevCurrent As Decimal = String.Empty
+    'Property StrResult As String = String.Empty
+    'Property StrExp As String = String.Empty
+    'Property StrPrevExp As String = String.Empty
+    'Property StrCurrExp As String = String.Empty
+    Property Nums As New Stack(Of Decimal)
+    Property Ops As New Stack(Of String)
+    Property Current As Decimal = Zero
+    Property Prev As Decimal = Zero
+    Property Oprt As String = String.Empty
+    Public op1 As String() = {"+", "-"}
+    Public op2 As String() = {"*", "/"}
+#End Region
 #Region "Code: Arithmetic method"
 
     Function Sqrt(ByVal d As Decimal) As Decimal
@@ -92,114 +95,52 @@ Friend Module Calc
     'End Sub
 
 #End Region
+    Function OpValue(ByVal op As String) As Integer
+        If Array.IndexOf(op1, op) >= 0 Then
+            Return 1
+        Else
+            Return 2
+        End If
+    End Function
+    Sub TryPushOp(ByVal op As String)
+        If Ops.Count = 0 AndAlso Nums.Count = 0 Then
+            Ops.Push(op)
+            Nums.Push(Current)
+            op = String.Empty
+            Exit Sub
+        End If
 
-    ''' <summary>
-    ''' 计算过程
-    ''' </summary>
-    ''' <param name="strO">算术运算符</param>
-    Sub SimpleCalc(ByVal strO As String)
-        'If Not Array.IndexOf(oprts, strO) >= 0 Then Exit Function
-        Select Case strO
-            Case "+"
-                Try
-                    Prev = Decimal.Add(Prev, Current)
-                Catch ex As Exception
-                    StrResult = "溢出"
-                    Reset()
-                End Try
-            Case "-"
-                Try
-                    Prev = Decimal.Subtract(Prev, Current)
-                Catch ex As Exception
-                    StrResult = "溢出"
-                    Reset()
-                End Try
-            Case "*"
-                Try
-                    Prev = Multiply(Prev, Current)
-                Catch ex As Exception
-                    StrResult = "溢出"
-                    Reset()
-                End Try
-            Case "/"
-                Try
-                    Prev = Decimal.Divide(Prev, Current)
-                Catch ex As Exception
-                    StrResult = IIf(Current = 0, "除数不能为零", "溢出")
-                    Reset()
-                End Try
-
-            '---------------------  % 的用法说明  -------------------------------------/
-            '%需要配合+-*/使用：输入a + b%，等于表达式a+a*b%                           '
-            '以工资为例：          如果我们的工资大于800开始扣税， 那么应该怎么算呢？  '
-            '第一步：            我们用3225-800 = 2425                                 '
-            '第二步：2425-485（税钱）=1940                                             '
-            '第三步：1940+800=2740（税后）                                             '
-            '--------------------------------------------------------------------------*/
-            Case "%"
-                If Array.IndexOf({"+", "-", "*", "/"}, Oprt) < 0 Then
-                    StrResult = "%需要配合+-*/使用：输入a + b%，等于表达式a+a*b%"
-                    Exit Sub
-                End If
-                Try
-                    Current = Prev * Current / 100
-                    StrCurrExp = IIf(StrCurrExp = "", "1 /(" & Current.ToString & ")", "1 /(" & StrCurrExp & ")")  '表达式显示方式
-                Catch ex As Exception
-                    StrResult = "溢出"
-                    Reset()
-                End Try
-            Case "sqrt"
-                Try
-                    Current = Parse(Math.Sqrt(Current))
-                    StrCurrExp = IIf(StrCurrExp = "", "sqrt(" & Current.ToString & ")", "sqrt(" & StrCurrExp & ")")  '表达式显示方式
-                Catch ex As Exception
-                    StrResult = IIf(Current < 0, "亲,别用负数求平方根好吗", "溢出")
-                    Reset()
-                End Try
-            Case "sqr"
-                Try
-                    Current = Parse(Math.Pow(Current, 2))
-                    StrCurrExp = IIf(StrCurrExp = "", "sqr(" & Current.ToString & ")", "sqr(" & StrCurrExp & ")")  '表达式显示方式
-                Catch ex As Exception
-                    StrResult = "溢出"
-                    Reset()
-                End Try
-            Case "reciprocal"
-                Try
-                    Current = Decimal.Divide(1, Current)
-                    StrCurrExp = IIf(StrCurrExp = "", "1 /(" & Current.ToString & ")", "1 /(" & StrCurrExp & ")")  '表达式显示方式
-                Catch ex As Exception
-                    StrResult = IIf(Current = 0, "除数不能为零", "溢出")
-                    Reset()
-                End Try
-        End Select
+        If OpValue(Ops.Peek) < OpValue(op) Then
+            Ops.Push(op)
+            Nums.Push(Current)
+            op = String.Empty
+        End If
+    End Sub
+    Sub Equal()
+        If Ops.Count = 0 Then Exit Sub
+        For i = 1 To Ops.Count
+            Current = Result(Ops.Pop, Nums.Pop, Current)
+        Next
     End Sub
 
-    Sub Reset()
-        Current = 0
-        Prev = 0
-        StrExp = ""
-        Oprt = ""
-    End Sub
-
-    Function Result(ByVal op As String) As Decimal
+    Function Result(ByVal op As String, ByVal p As Decimal, ByVal c As Decimal) As Decimal
         Select Case op
             Case "+"
-                Result = Decimal.Add(Prev, Current)
+                Result = Add(p, c)
             Case "-"
-                Result = Decimal.Subtract(Prev, Current)
+                Result = Subtract(p, c)
             Case "*"
-                Result = Multiply(PrevCurrent, Current)
+                Result = Multiply(p, c)
             Case "/"
-                Result = Divide(PrevCurrent, Current)
+                Result = Divide(p, c)
             Case "%"
-                Result = Multiply(Prev, Current / 100)
+                Result = Multiply(p, c / 100)
             Case "sqrt"
-                Result = Parse(Math.Sqrt(Current))
+                Result = Parse(Math.Sqrt(c))
             Case "sqr"
-                Result = Parse(Math.Pow(Current, 2))
+                Result = Parse(Math.Pow(c, 2))
             Case "reciprocal"
-                Result = Decimal.Divide(1, Current)
+                Result = Divide(1, c)
             Case Else
                 Exit Select
         End Select

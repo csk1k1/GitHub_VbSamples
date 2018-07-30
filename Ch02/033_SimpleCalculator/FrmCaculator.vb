@@ -8,8 +8,6 @@ Public Class FrmCaculator
     Private hasExt As Boolean = False
     Private arrSubExp As New ArrayList
     Private decimalSeparator As String = CurrentInfo.NumberDecimalSeparator
-    Private nums As New Stack(Of Decimal)
-    Private ops As New Stack(Of String)
     Public Property TxtResult As String
         Get
             Return LblResult.Text
@@ -60,9 +58,8 @@ Public Class FrmCaculator
     End Sub
 
     Private Sub BtnDot_Click(sender As Object, e As EventArgs) Handles BtnDot.Click
-        If Not hasDot Then
+        If InStr(TxtResult, decimalSeparator) < 0 Then
             EntryNum(decimalSeparator)
-            hasDot = True
         End If
     End Sub
 
@@ -197,5 +194,14 @@ Public Class FrmCaculator
         End Select
     End Sub
 
+    Private Sub Clear()
+        Prev = Decimal.Zero
+        Oprt = String.Empty
+        TxtExpression = String.Empty
+    End Sub
 
+    Private Sub BtnEqual_Click(sender As Object, e As EventArgs) Handles BtnEqual.Click
+        Equal()
+        Clear()
+    End Sub
 End Class
