@@ -12,7 +12,16 @@ Imports System.Decimal
 '''////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Friend Module Calc
-
+    Property StrExp As String = String.Empty
+    Property NumStack As New Stack(Of Decimal)
+    Property OpStack As New Stack(Of String)
+    Property Current As Decimal = Zero
+    Property Prev As Decimal = Zero
+    Property Oprt As String = String.Empty
+    Public op1 As String() = {"+", "-"}
+    Public op2 As String() = {"*", "/"}
+    Public op3 As String() = {"sqr", "sqrt", "reciprocal"}
+    Public op4 As String() = {"%"}
 #Region "DeclareRecycle"
     'Private preVal As Decimal
     'Private currentVal As Decimal
@@ -22,33 +31,26 @@ Friend Module Calc
     'Property StrExp As String = String.Empty
     'Property StrPrevExp As String = String.Empty
     'Property StrCurrExp As String = String.Empty
-    Property Nums As New Stack(Of Decimal)
-    Property Ops As New Stack(Of String)
-    Property Current As Decimal = Zero
-    Property Prev As Decimal = Zero
-    Property Oprt As String = String.Empty
-    Public op1 As String() = {"+", "-"}
-    Public op2 As String() = {"*", "/"}
 #End Region
 #Region "Code: Arithmetic method"
 
-    Function Sqrt(ByVal d As Decimal) As Decimal
-        Try
-            Sqrt = Parse(Math.Sqrt(d))
-        Catch ex As Exception
-            StrResult = IIf(d < 0, "Invalid Data", "溢出")
-            Return Nothing
-        End Try
-    End Function
+    'Function Sqrt(ByVal d As Decimal) As Decimal
+    '    Try
+    '        Sqrt = Parse(Math.Sqrt(d))
+    '    Catch ex As Exception
+    '        StrResult = IIf(d < 0, "Invalid Data", "溢出")
+    '        Return Nothing
+    '    End Try
+    'End Function
 
-    Function Sqr(ByVal d As Decimal) As Decimal
-        Try
-            Sqr = Parse(Math.Pow(d, 2))
-        Catch ex As Exception
-            StrResult = "溢出"
-            Return Nothing
-        End Try
-    End Function
+    'Function Sqr(ByVal d As Decimal) As Decimal
+    '    Try
+    '        Sqr = Parse(Math.Pow(d, 2))
+    '    Catch ex As Exception
+    '        StrResult = "溢出"
+    '        Return Nothing
+    '    End Try
+    'End Function
 
 
 #End Region
@@ -95,46 +97,78 @@ Friend Module Calc
     'End Sub
 
 #End Region
-    Function OpValue(ByVal op As String) As Integer
+    'Op:运算符     PRI:优先级Priority
+    Function OpPRI(ByVal op As String) As Integer
         If Array.IndexOf(op1, op) >= 0 Then
             Return 1
-        Else
+        ElseIf Array.IndexOf(op2, op) >= 0 Then
             Return 2
+        ElseIf Array.IndexOf(op3, op) >= 0 Then
+            Return 3
+        Else
+            Return 4
         End If
     End Function
-    Sub TryPushOp(ByVal op As String)
-        If Ops.Count = 0 AndAlso Nums.Count = 0 Then
-            Ops.Push(op)
-            Nums.Push(Current)
-            op = String.Empty
+    Sub PushOp(ByVal op As String)
+
+        If OpPRI(op) = 4 Then
+            If OpStack.Count > 0 AndAlso NumStack.Count > 0 Then
+                Current = GetResult(op, NumStack.Peek, Current)
+                op = String.Empty
+                Exit Sub
+            End If
+        ElseIf OpPRI(op) = 3 Then
+            'Try
+            '    Current = Result(op, Current)
+            '    Exit Sub
+            'Catch ex As Exception
+            '    ErrText(op)
+            'End Try
+            Current = Result(op, Current)
             Exit Sub
         End If
 
-        If OpValue(Ops.Peek) < OpValue(op) Then
-            Ops.Push(op)
-            Nums.Push(Current)
+        If (OpStack.Count = 0 AndAlso NumStack.Count = 0) Then      '数字和符号栈都为空
+            OpStack.Push(op)
+            NumStack.Push(Current)
             op = String.Empty
+            Exit Sub
+        ElseIf OpPRI(OpStack.Peek) < OpPRI(op) Then     '栈顶的运算符优先级低于准备入栈的op,不计算直接入栈
+            OpStack.Push(op)
+            NumStack.Push(Current)
+            op = String.Empty
+            Exit Sub
+        ElseIf OpPRI(OpStack.Peek) >= OpPRI(op) Then    '栈顶的运算符优先级高于准备入栈的op,先弹出栈顶的数字和运算符与current进行算术运算,并将结果赋值给Current和当前op作为参数继续调用入栈过程PushOp()
+            Current = GetResult(OpStack.Pop, NumStack.Pop, Current)
+            PushOp(op)
         End If
     End Sub
     Sub Equal()
-        If Ops.Count = 0 Then Exit Sub
-        For i = 1 To Ops.Count
-            Current = Result(Ops.Pop, Nums.Pop, Current)
+        If OpStack.Count = 0 Then Exit Sub
+        For i = OpStack.Count To 1 Step -1
+            Current = GetResult(OpStack.Pop, NumStack.Pop, Current)
         Next
+        Reboot()
     End Sub
 
-    Function Result(ByVal op As String, ByVal p As Decimal, ByVal c As Decimal) As Decimal
+    Function GetResult(ByVal op As String, ByVal p As Decimal, ByVal c As Decimal) As Decimal
         Select Case op
             Case "+"
-                Result = Add(p, c)
+                GetResult = Add(p, c)
             Case "-"
-                Result = Subtract(p, c)
+                GetResult = Subtract(p, c)
             Case "*"
-                Result = Multiply(p, c)
+                GetResult = Multiply(p, c)
             Case "/"
-                Result = Divide(p, c)
+                GetResult = Divide(p, c)
             Case "%"
-                Result = Multiply(p, c / 100)
+                GetResult = Multiply(p, c / 100)
+            Case Else
+                Return Nothing
+        End Select
+    End Function
+    Function Result(ByVal op As String, ByVal c As Decimal) As Decimal
+        Select Case op
             Case "sqrt"
                 Result = Parse(Math.Sqrt(c))
             Case "sqr"
@@ -142,8 +176,32 @@ Friend Module Calc
             Case "reciprocal"
                 Result = Divide(1, c)
             Case Else
-                Exit Select
+                Return Nothing
         End Select
-        Return Result
     End Function
+
+    Public Function ErrText(ByVal op As String) As String
+        Select Case op
+            Case "/"
+                ErrText = "亲,除数不能为零哦"
+            Case "%"
+                ErrText = "%用法示例: a<?op1>b%: 使用%方法为 输入数字a 加 (+-*/)任一 再加数字b 最后输入%"
+            Case "sqrt"
+                ErrText = "负数没有平方根(虚数人家不懂的啦)"
+            Case "reciprocal"
+                ErrText = "亲,人家不会对零求倒数啊"
+            Case Else
+                ErrText = "臣妾做不到啊~"
+        End Select
+        Reboot()
+    End Function
+
+    Public Sub Reboot()
+        Current = Decimal.Zero
+        Prev = Decimal.Zero
+        Oprt = String.Empty
+        OpStack.Clear()
+        NumStack.Clear()
+        strExp = String.Empty
+    End Sub
 End Module

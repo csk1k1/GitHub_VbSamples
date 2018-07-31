@@ -37,7 +37,6 @@ Public Class FrmCaculator
         If Not TxtResult.Length < 12 Then
             Exit Sub
         End If
-
         '如果初值已经变为非零数，则新数字加在strCurrent最后；如果初值还是零则用新值赋值给strCurrent
         If TxtResult <> "0" OrElse n = decimalSeparator Then
             'strCurrent = strCurrent + n
@@ -53,7 +52,7 @@ Public Class FrmCaculator
 
     Private Sub BtnPlusMinus_Click(sender As Object, e As EventArgs) Handles BtnPN.Click
         TxtExpression += "Negate(" + Current.ToString + ")"
-        Current = Negate(Current)
+        Current = Decimal.Negate(Current)
         TxtResult = Current.ToString
     End Sub
 
