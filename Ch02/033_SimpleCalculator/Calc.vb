@@ -12,7 +12,7 @@ Imports System.Decimal
 '''////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Friend Module Calc
-    Property StrExp As String = String.Empty
+    Property TxtStack As New Stack(Of String)
     Property NumStack As New Stack(Of Decimal)
     Property OpStack As New Stack(Of String)
     Property Current As Decimal = Zero
@@ -20,7 +20,7 @@ Friend Module Calc
     Property Oprt As String = String.Empty
     Public op1 As String() = {"+", "-"}
     Public op2 As String() = {"*", "/"}
-    Public op3 As String() = {"sqr", "sqrt", "reciprocal"}
+    Public op3 As String() = {"sqr", "sqrt", "rec"}
     Public op4 As String() = {"%"}
 #Region "DeclareRecycle"
     'Private preVal As Decimal
@@ -68,7 +68,7 @@ Friend Module Calc
 
     '                Case "sqr"
 
-    '                Case "reciprocal"
+    '                Case "rec"
     '                    Oprt = String.Empty
     '                    Prev = Decimal.Zero
     '                    SimpleCalc(strO)
@@ -109,72 +109,72 @@ Friend Module Calc
             Return 4
         End If
     End Function
-    Sub PushOp(ByVal op As String)
+    Sub CallCalc(Oprt)
 
-        If OpPRI(op) = 4 Then
+        If OpPRI(Oprt) = 4 Then
             If OpStack.Count > 0 AndAlso NumStack.Count > 0 Then
-                Current = GetResult(op, NumStack.Peek, Current)
-                op = String.Empty
+                Current = Calc(Oprt, NumStack.Peek, Current)
+                Oprt = String.Empty
                 Exit Sub
             End If
-        ElseIf OpPRI(op) = 3 Then
+        ElseIf OpPRI(Oprt) = 3 Then
             'Try
             '    Current = Result(op, Current)
             '    Exit Sub
             'Catch ex As Exception
             '    ErrText(op)
             'End Try
-            Current = Result(op, Current)
+            Current = Calc(Oprt, Current)
             Exit Sub
         End If
 
         If (OpStack.Count = 0 AndAlso NumStack.Count = 0) Then      '数字和符号栈都为空
-            OpStack.Push(op)
+            OpStack.Push(Oprt)
             NumStack.Push(Current)
-            op = String.Empty
+            Oprt = String.Empty
             Exit Sub
-        ElseIf OpPRI(OpStack.Peek) < OpPRI(op) Then     '栈顶的运算符优先级低于准备入栈的op,不计算直接入栈
-            OpStack.Push(op)
+        ElseIf OpPRI(OpStack.Peek) < OpPRI(Oprt) Then     '栈顶的运算符优先级低于准备入栈的op,不计算直接入栈
+            OpStack.Push(Oprt)
             NumStack.Push(Current)
-            op = String.Empty
+            Oprt = String.Empty
             Exit Sub
-        ElseIf OpPRI(OpStack.Peek) >= OpPRI(op) Then    '栈顶的运算符优先级高于准备入栈的op,先弹出栈顶的数字和运算符与current进行算术运算,并将结果赋值给Current和当前op作为参数继续调用入栈过程PushOp()
-            Current = GetResult(OpStack.Pop, NumStack.Pop, Current)
-            PushOp(op)
+        ElseIf OpPRI(OpStack.Peek) >= OpPRI(Oprt) Then    '栈顶的运算符优先级高于准备入栈的op,先弹出栈顶的数字和运算符与current进行算术运算,并将结果赋值给Current和当前op作为参数继续调用入栈过程PushOp()
+            Current = Calc(OpStack.Pop, NumStack.Pop, Current)
+            CallCalc(Oprt)
         End If
     End Sub
     Sub Equal()
         If OpStack.Count = 0 Then Exit Sub
         For i = OpStack.Count To 1 Step -1
-            Current = GetResult(OpStack.Pop, NumStack.Pop, Current)
+            Current = Calc(OpStack.Pop, NumStack.Pop, Current)
         Next
         Reboot()
     End Sub
 
-    Function GetResult(ByVal op As String, ByVal p As Decimal, ByVal c As Decimal) As Decimal
+    Function Calc(ByVal op As String, ByVal p As Decimal, ByVal c As Decimal) As Decimal
         Select Case op
             Case "+"
-                GetResult = Add(p, c)
+                Calc = Add(p, c)
             Case "-"
-                GetResult = Subtract(p, c)
+                Calc = Subtract(p, c)
             Case "*"
-                GetResult = Multiply(p, c)
+                Calc = Multiply(p, c)
             Case "/"
-                GetResult = Divide(p, c)
+                Calc = Divide(p, c)
             Case "%"
-                GetResult = Multiply(p, c / 100)
+                Calc = Multiply(p, c / 100)
             Case Else
                 Return Nothing
         End Select
     End Function
-    Function Result(ByVal op As String, ByVal c As Decimal) As Decimal
+    Function Calc(ByVal op As String, ByVal c As Decimal) As Decimal
         Select Case op
             Case "sqrt"
-                Result = Parse(Math.Sqrt(c))
+                Calc = Parse(Math.Sqrt(c))
             Case "sqr"
-                Result = Parse(Math.Pow(c, 2))
-            Case "reciprocal"
-                Result = Divide(1, c)
+                Calc = Parse(Math.Pow(c, 2))
+            Case "rec"
+                Calc = Divide(1, c)
             Case Else
                 Return Nothing
         End Select
@@ -188,7 +188,7 @@ Friend Module Calc
                 ErrText = "%用法示例: a<?op1>b%: 使用%方法为 输入数字a 加 (+-*/)任一 再加数字b 最后输入%"
             Case "sqrt"
                 ErrText = "负数没有平方根(虚数人家不懂的啦)"
-            Case "reciprocal"
+            Case "rec"
                 ErrText = "亲,人家不会对零求倒数啊"
             Case Else
                 ErrText = "臣妾做不到啊~"
@@ -202,6 +202,6 @@ Friend Module Calc
         Oprt = String.Empty
         OpStack.Clear()
         NumStack.Clear()
-        strExp = String.Empty
+        TxtStack.Clear()
     End Sub
 End Module

@@ -3,8 +3,8 @@
 Imports System.Decimal
 Imports System.Globalization.NumberFormatInfo
 Public Class FrmCaculator
-    Private hasDot As Boolean = False
-    Private Flag As Boolean = False
+    Private InputSwitchOpen As Boolean = True
+    Private ErrFlag As Boolean = False
     Private hasExt As Boolean = False
     Private arrSubExp As New ArrayList
     Private decimalSeparator As String = CurrentInfo.NumberDecimalSeparator
@@ -99,12 +99,6 @@ Public Class FrmCaculator
     End Sub
 
     Private Sub BtnPlus_Click(sender As Object, e As EventArgs) Handles BtnPlus.Click
-        If Array.IndexOf(oprts, TxtExpression.Last) < 0 Then
-            TxtExpression += Current.ToString & "+"
-        Else
-            TxtExpression = TxtExpression.Remove(TxtExpression.Length - 1) & "+"
-        End If
-        TxtExpression = If(Array.IndexOf(oprts, TxtExpression.Last) < 0, TxtExpression + Current.ToString & "+", TxtExpression.Remove(TxtExpression.Length - 1) & "+")
 
     End Sub
 
@@ -121,26 +115,40 @@ Public Class FrmCaculator
     End Sub
 
     Private Sub BtnBackspace_Click(sender As Object, e As EventArgs) Handles BtnBackspace.Click
-        If Current > 0 Then
-            TxtResult.Remove(TxtResult.Length - 1)
-            Current = IIf(TxtResult = "", 0, CDec(TxtResult))
+        If TxtResult.Length = 1 And Current = Zero Then
+            Exit Sub
+        End If
+        If InputSwitchOpen Then
+            If TxtResult.Length > 1 Then
+                TxtResult = TxtResult.Remove(TxtResult.Length - 1)
+                Current = CDec(TxtResult)
+            Else
+                TxtResult = "0"
+                Current = Zero
+            End If
         End If
     End Sub
 
     Private Sub BtnC_Click(sender As Object, e As EventArgs) Handles BtnC.Click
-        TxtExpression = ""
-        TxtResult = "0"
-        Prev = Decimal.Zero
-        'Current = Decimal.Zero
+        If ErrFlag = True Then
+            ErrOff()
+        End If
+        Clear()
     End Sub
 
     Private Sub BtnCe_Click(sender As Object, e As EventArgs) Handles BtnCe.Click
         TxtResult = "0"
-        'Current = Decimal.Zero
+        Current = Decimal.Zero
     End Sub
 
     Private Sub BtnReciprocal_Click(sender As Object, e As EventArgs) Handles BtnReciprocal.Click
-
+        If Current = Zero Then
+            TxtResult = Calc.ErrText("rec")
+            ErrOn()
+        Else
+            Current = Calc.Calc("rec", Current)
+            TxtResult = Current.ToString
+        End If
     End Sub
 
     Private Sub BtnSqr_Click(sender As Object, e As EventArgs) Handles BtnSqr.Click
@@ -197,10 +205,30 @@ Public Class FrmCaculator
         Prev = Decimal.Zero
         Oprt = String.Empty
         TxtExpression = String.Empty
+        TxtResult = "0"
+        Current = Decimal.Zero
     End Sub
 
     Private Sub BtnEqual_Click(sender As Object, e As EventArgs) Handles BtnEqual.Click
         Equal()
         Clear()
+    End Sub
+
+    Private Sub ErrOn()
+        ErrFlag = True
+        For Each cmd As Control In TableLayoutPanel1.Controls
+            If TypeOf cmd Is Button And cmd.Name <> NameOf(BtnC) Then
+                cmd.Enabled = False
+            End If
+        Next
+    End Sub
+
+    Private Sub ErrOff()
+        ErrFlag = False
+        For Each cmd As Control In TableLayoutPanel1.Controls
+            If TypeOf cmd Is Button And cmd.Name <> NameOf(BtnC) Then
+                cmd.Enabled = True
+            End If
+        Next
     End Sub
 End Class
